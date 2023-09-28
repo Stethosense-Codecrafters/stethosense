@@ -12,7 +12,12 @@ urlpatterns = [
     path('signup/', views.signup, name='signup'),
     path('login/', views.loginPage, name='login'),
     path('logout/',auth_views.LogoutView.as_view(), name='logout'),
-    path('login/forgot/', views.forgot, name='forgot'),
+    path('login/forgot/', views.CustomPasswordResetView.as_view(), name='forgot'),
+    path(
+        'password_reset_done/',
+        auth_views.PasswordResetDoneView.as_view(),
+        name='password_reset_done'
+    ),
     path('update-password/', views.update_password, name='update-password'),
     path('', include('user.urls')),
 

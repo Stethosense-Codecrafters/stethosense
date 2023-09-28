@@ -1,0 +1,4 @@
+1. Update password
+2. Blog -BMI
+3. Update Dash with blog 
+4. Update height and weight

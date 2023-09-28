@@ -39,12 +39,13 @@
                 </div>
             </div>
 
+            <!-- Add this form to your reset_password.html template -->
             <div class="card mt-4">
                 <div class="card-header bg-success text-white">
                     <h2 class="text-center">Forgot Password</h2>
                 </div>
                 <div class="card-body">
-                    <form method="post" action="">
+                    <form method="post">
                         {% csrf_token %}
                         <div class="form-group">
                             <label for="email">Email:</label>
@@ -55,6 +56,16 @@
                     </form>
                 </div>
             </div>
+
+            <div class="alert alert-info mt-4">
+                {% if messages %}
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                {% endif %}
+            </div>
+            
+
         </div>
     </div>
 </div>

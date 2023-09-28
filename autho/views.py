@@ -15,12 +15,12 @@ import uuid
 from user.models import HealthProfile
 
 
-from django.contrib.auth.views import PasswordResetView, PasswordResetConfirmView
 from django.urls import reverse_lazy
 
-from django.contrib import messages
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
+
+from django.contrib.auth.views import PasswordResetView
 
 
 def home(request):
@@ -75,16 +75,28 @@ def signup(request):
     return render(request, 'signup.html', {'form': form})
 
 
-def forgot(request):
-    return render(request, 'reset_password.html')
+
+
+class CustomPasswordResetView(PasswordResetView):
+    template_name = 'reset_password.html'
+
+    def form_valid(self, form):
+        """
+        This method is called when the form is valid and the email has been sent.
+        """
+        messages.info(self.request, "If you have an account associated with this email, a password reset link has been sent.")
+        return super().form_valid(form)
 
 
 
 
+@login_required
 def update_password(request):
     if request.method == 'POST':
         form = PasswordChangeForm(request.user, request.POST)
         if form.is_valid():
+            # Clean the form data, including the old_password field
+            form.clean()
             user = form.save()
             # Important: update the user's session to avoid logging them out
             update_session_auth_hash(request, user)
@@ -93,6 +105,7 @@ def update_password(request):
             # Redirect to the home page or any other URL you prefer
             return redirect('home')
         else:
+            print(form.errors)
             messages.error(request, 'Password update failed. Please correct the errors.')
     else:
         form = PasswordChangeForm(request.user)

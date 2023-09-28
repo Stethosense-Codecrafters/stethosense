@@ -129,7 +129,7 @@ br {
             <span class="nav-link">Navigation</span>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="{% url 'home' %}">
               <span class="menu-icon">
                 <i class="mdi mdi-speedometer"></i>
               </span>
@@ -217,7 +217,7 @@ br {
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar p-0 fixed-top d-flex flex-row">
           <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
-            <a class="navbar-brand brand-logo-mini" href="index.html">S</a>
+            <a class="navbar-brand brand-logo-mini" href="{% url 'home' %}"><img src="{% static 'img/images/logo.png' %}" alt="logo" style="width:30px; height:30px; border-radius: 50%;"></a>
           </div>
           <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
             <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -388,7 +388,7 @@ br {
                     </div>
                   </a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item">
+                  <a class="dropdown-item preview-item" href="{% url 'logout' %}">
                     <div class="preview-thumbnail">
                       <div class="preview-icon bg-dark rounded-circle">
                         <i class="mdi mdi-logout text-danger"></i>
@@ -406,6 +406,7 @@ br {
             <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
               <span class="mdi mdi-format-line-spacing"></span>
             </button>
+            
           </div>
         </nav>
         <!-- partial -->
@@ -433,6 +434,33 @@ br {
                 </div>
               </div>
             </div> -->
+
+            <div class="row">
+              <div class="col-12 grid-margin stretch-card">
+               
+                  <div class="card-body py-0 px-0 px-sm-3">
+                    <div class="row align-items-center">
+                      <div class="col-4 col-sm-3 col-xl-2">
+                        <img src="{% static 'assets/images/dashboard/Group126@2x.png" class="gradient-corona-img img-fluid" alt="">
+                      </div>
+                      <div class="col-5 col-sm-7 col-xl-8 p-0">
+                        {% if messages %}
+                        <ul class="messages" style="list-style-type: none;">
+                            {% for message in messages %}
+                                <li class="alert alert-{{ message.tags }} alert-dismissible">
+                                    {{ message }}
+                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+             
+              </div>
+            </div> 
+
             <div class="row">
               <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
                 <div class="card">
@@ -440,7 +468,11 @@ br {
                     <div class="row">
                       <div class="col-9">
                         <div class="d-flex align-items-center align-self-start">
-                          <h3 class="mb-0 text-success">{{ custom_user.medical_id }}</h3>
+                          {% if custom_user.medical_id %}
+                            <h3 class="mb-0 text-success">{{ custom_user.medical_id }}</h3>
+                          {% else %}
+                            <h3 class="mb-0 text-muted">No Data</h3>
+                          {% endif %}
                           <!-- <p class="text-success ml-2 mb-0 font-weight-medium">+3.5%</p> -->
                         </div>
                       </div>
@@ -460,8 +492,14 @@ br {
                     <div class="row">
                       <div class="col-9">
                         <div class="d-flex align-items-center align-self-start">
-                          <h3 class="mb-0 text-success">{{ health_profile.bmi }}</h3>
-                          <!-- <p class="text-success ml-2 mb-0 font-weight-medium">+11%</p> -->
+                          <h3 class="mb-0 text-success">
+                            {% if health_profile.bmi %}
+                              <h3 class="mb-0">{{ health_profile.bmi }}</h3>
+                            {% else %}
+                              <h3 class="mb-0 text-muted">No Data</h3>
+                            {% endif %}
+                        </h3>
+                          <p class="text-success ml-2 mb-0 font-weight-medium"> kg/m²</p> 
                         </div>
                       </div>
                       <div class="col-3">
@@ -470,7 +508,11 @@ br {
                         </div>
                       </div>
                     </div>
-                    <h6 class="text-muted font-weight-normal">Body Mass Index</h6>
+                    {% if health_profile.height or health_profile.weight %}
+                      <h6 class="text-muted font-weight-normal">Body Mass Index</h6>
+                      <h6 class="text-muted font-weight-normal">Height : {{ health_profile.height }} in cm</h6>
+                      <h6 class="text-muted font-weight-normal">Weight : {{ health_profile.weight }} in kg</h6>
+                    {% endif %}
                   </div>
                 </div>
               </div>
@@ -480,7 +522,13 @@ br {
                     <div class="row">
                       <div class="col-9">
                         <div class="d-flex align-items-center align-self-start">
-                          <h3 class="mb-0 text-danger">{{ health_profile.blood_group }}</h3>
+                          <h3 class="mb-0 text-danger">
+                            {% if health_profile.blood_group %}  
+                              {{ health_profile.blood_group }}
+                              {% else %}
+                              <h3 class="mb-0 text-muted">No Data</h3>
+                            {% endif %}
+                            </h3>
                           <!-- <p class="text-danger ml-2 mb-0 font-weight-medium">-2.4%</p> -->
                         </div>
                       </div>
