@@ -100,11 +100,11 @@ def calculate_calorie_requirements(gender, age, height_cm, weight_kg):
 
 import pickle
 
-with open('days_data.pkl', 'rb') as file:
-    days_data = pickle.load(file)
 
-type(days_data)
 def model(prob,day,kg,calories):
+    with open('days_data.pkl', 'rb') as file:
+        days_data = pickle.load(file)
+
     G = extract_gram(build_nutritional_values(kg,calories))
     E = G['Carbohydrates Grams']
     F = G['Fat Grams']
@@ -117,7 +117,7 @@ def model(prob,day,kg,calories):
     e = day_data.carbohydrate.tolist()
     f = day_data.total_fat.tolist()
     p = day_data.protein.tolist()
-#    prob  = pulp.LpProblem( "Diet", LpMinimize )
+    prob  = pulp.LpProblem( "Diet", LpMinimize )
     prob += pulp.lpSum( [x[food[i]]*c[i] for i in range(len(food))]  )
     prob += pulp.lpSum( [x[food[i]]*e[i] for i in range(len(x)) ] )>=E
     prob += pulp.lpSum( [x[food[i]]*f[i] for i in range(len(x)) ] )>=F

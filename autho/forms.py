@@ -1,11 +1,11 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
-from django.forms import ModelForm
-from .models import CustomUser
-from django.db import models
+# from django.forms import ModelForm
+# from .models import CustomUser
+# from django.db import models
 
-from django.forms.widgets import FileInput
+# from django.forms.widgets import FileInput
 
 
 

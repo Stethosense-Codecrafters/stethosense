@@ -8,6 +8,7 @@ from .models import HealthProfile
 
 from autho.models import CustomUser
 from .models import HealthProfile  
+from .diet import Diet
 
 def home_view(request):
     user = request.user  # Get the currently logged-in user
@@ -50,8 +51,14 @@ def health_profile(request):
     return render(request, 'health_profile.html', {'form': form})
 
 @login_required
-def diet(request) :
-    # user = request.user
+def diet(request):
+    health_profile = None
+    try:
+        health_profile = HealthProfile.objects.get(user=request.user)
+    except HealthProfile.DoesNotExist:
+        redirect('health-profile')
     
-    
-    return render(request, 'diet.html')
+    if health_profile is not None:
+        diet = Diet(health_profile.height, health_profile.weight, health_profile.gender, health_profile.age)
+        
+    return render(request, 'diet.html', {'diet_plan': diet.get_diet_plan(), 'health_profile': diet.get_health_profile()})   

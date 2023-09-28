@@ -20,8 +20,7 @@ def home(request):
     return render(request, 'index.html', {'user':user})
 
 @csrf_exempt
-def loginPage(request):
-    
+def loginPage(request): 
     if request.method == 'POST':
         email = request.POST['email']
         password = request.POST['password']

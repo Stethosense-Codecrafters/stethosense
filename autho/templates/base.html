@@ -70,6 +70,11 @@
     margin: 5px 0;
 }
 
+.send:hover {
+  border: 1px solid aquamarine !important;
+  color: aquamarine !important;
+}
+
   </style>
 </head>
 
@@ -77,8 +82,8 @@
 
   <div class="hero_area">
 
-    <div class="hero_bg_box">
-      <img src="{% static 'img/images/hero-bg.png' %}" class="hero_bg_box">
+    <div class="hero_bg_box" style="background-color: rgb(40, 145, 145);">
+      <!-- <img src="{% static 'img/images/hero-bg.png' %}" class="hero_bg_box"> -->
     </div>
 
     <!-- header section strats -->
@@ -137,7 +142,7 @@
   <!-- contact section -->
   <section class="contact_section layout_padding">
     <div class="container">
-      <div class="heading_container">
+      <div class="heading_container text-white">
         <h2>
           Get In Touch
         </h2>
@@ -149,40 +154,40 @@
               <div class="form-row">
                 <div class="col-lg-6">
                   <div>
-                    <input type="text" placeholder="Your Name" />
+                    <input type="text" class="form-control" placeholder="Your Name" />
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div>
-                    <input type="text" placeholder="Phone Number" />
+                    <input type="text" class="form-control" placeholder="Phone Number" />
                   </div>
                 </div>
               </div>
               <div>
-                <input type="email" placeholder="Email" />
+                <input type="email" class="form-control" placeholder="Email" />
               </div>
               <div>
-                <input type="text" class="message-box" placeholder="Message" />
+                <input type="text" class="form-control" class="message-box" placeholder="Message" />
               </div>
-              <div class="btn_box">
-                <button>
+              <!-- <div class=""> -->
+                <button class="btn btn-primary send" type="submit">
                   SEND
                 </button>
-              </div>
+              <!-- </div> -->
             </form>
           </div>
         </div>
-       
+
         <div class="col-md-6">
           <div class="logo_container">
             <img src="{% static 'img/images/logo.png' %}" alt="Your Logo">
             <a href="#">
-              <i class="fa fa-phone" aria-hidden="true"></i>
-              <span>Call +91 1234567890</span>
+              <i class="fa fa-phone text-white" aria-hidden="true"></i>
+              <span class="text-white">Call +91 1234567890</span>
             </a>
             <a href="#">
-              <i class="fa fa-envelope" aria-hidden="true"></i>
-              <span>stethosense@gmail.com</span>
+              <i class="fa fa-envelope text-white" aria-hidden="true"></i>
+              <span class="text-white">stethosense@gmail.com</span>
             </a>
           </div>
           
