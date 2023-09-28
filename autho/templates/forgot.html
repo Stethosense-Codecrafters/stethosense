@@ -4,64 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forgot Password</title>
-    <!-- Include Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: rgb(33, 33, 33);
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px 20px 20px 20px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            margin-top: 100px;
+            padding-bottom: 40px;
+        }
+
+        h2 {
+            color: #00a69c;
+        }
+
+        input[type="email"] {
+            width: 75%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid lightgray;
+            border-radius: 8px;
+            background-color: #f0f0f0;
+            transition: ease .25s;
+        }
+        input[type="email"]:hover {
+            border: 2px solid lightseagreen !important;
+        }
+
+
+
+        button {
+            background-color: #00a69c;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            padding: 10px 20px 10 20px;
+            cursor: pointer;
+            padding: 10px 16px 10px 16px;
+            transition: ease .3s;
+        }
+
+        button:hover {
+            background-color: #007d75;
+        }
+    </style>
 </head>
 <body>
-
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-md-6 offset-md-3">
-            <div class="card">
-                <div class="card-header bg-primary text-white">
-                    <h2 class="text-center">Update Password</h2>
-                </div>
-                <div class="card-body">
-                    <form method="post" action="">
-                        {% csrf_token %}
-                        <div class="form-group">
-                            <label for="current_password">Current Password:</label>
-                            <input type="password" class="form-control" name="current_password" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="new_password1">New Password:</label>
-                            <input type="password" class="form-control" name="new_password1" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="new_password2">Confirm New Password:</label>
-                            <input type="password" class="form-control" name="new_password2" required>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary btn-block">Update Password</button>
-                    </form>
-                </div>
-            </div>
-
-            <div class="card mt-4">
-                <div class="card-header bg-success text-white">
-                    <h2 class="text-center">Forgot Password</h2>
-                </div>
-                <div class="card-body">
-                    <form method="post" action="">
-                        {% csrf_token %}
-                        <div class="form-group">
-                            <label for="email">Email:</label>
-                            <input type="email" class="form-control" name="email" required>
-                        </div>
-
-                        <button type="submit" class="btn btn-success btn-block">Reset Password</button>
-                    </form>
-                </div>
-            </div>
-        </div>
+    <div class="container">
+        <h2>Forgot your password?</h2>
+        <p>Reset it here. Just enter your email down below.</p>
+        <form>
+            <input type="email" placeholder="Email" required>
+            <br><br>
+            <button type="submit">Reset Password</button>
+        </form>
     </div>
-</div>
-
-<!-- Include Bootstrap JS and jQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

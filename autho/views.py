@@ -15,14 +15,6 @@ import uuid
 from user.models import HealthProfile
 
 
-from django.contrib.auth.views import PasswordResetView, PasswordResetConfirmView
-from django.urls import reverse_lazy
-
-from django.contrib import messages
-from django.contrib.auth.forms import PasswordChangeForm
-from django.contrib.auth import update_session_auth_hash
-
-
 def home(request):
     user=request.user
     return render(request, 'index.html', {'user':user})
@@ -76,27 +68,4 @@ def signup(request):
 
 
 def forgot(request):
-    return render(request, 'reset_password.html')
-
-
-
-
-def update_password(request):
-    if request.method == 'POST':
-        form = PasswordChangeForm(request.user, request.POST)
-        if form.is_valid():
-            user = form.save()
-            # Important: update the user's session to avoid logging them out
-            update_session_auth_hash(request, user)
-            # Show a success message
-            messages.success(request, 'Password updated successfully.')
-            # Redirect to the home page or any other URL you prefer
-            return redirect('home')
-        else:
-            messages.error(request, 'Password update failed. Please correct the errors.')
-    else:
-        form = PasswordChangeForm(request.user)
-    return render(request, 'update_password.html', {'form': form})
-
-
-
+    return render(request, 'forgot.html')

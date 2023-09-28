@@ -13,7 +13,6 @@ urlpatterns = [
     path('login/', views.loginPage, name='login'),
     path('logout/',auth_views.LogoutView.as_view(), name='logout'),
     path('login/forgot/', views.forgot, name='forgot'),
-    path('update-password/', views.update_password, name='update-password'),
     path('', include('user.urls')),
 
 ]  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

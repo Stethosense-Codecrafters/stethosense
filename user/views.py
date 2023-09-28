@@ -9,33 +9,20 @@ from .models import HealthProfile
 from autho.models import CustomUser
 from .models import HealthProfile  
 
-from datetime import datetime
-
-
-@login_required
 def home_view(request):
     user = request.user  # Get the currently logged-in user
     try:
         custom_user = CustomUser.objects.get(id=user.id)
         health_profile = HealthProfile.objects.get(user=user)
-        today = datetime.now().date()
-        membership_duration = today - user.date_joined.date()
-    
     except (CustomUser.DoesNotExist, HealthProfile.DoesNotExist):
         custom_user = None
         health_profile = None
-        membership_duration = None  # Set membership_duration to None when user or health profile doesn't exist
-
-    # Check if membership_duration is not None before accessing the 'days' attribute
-    membership_duration_days = membership_duration.days if membership_duration is not None else None
 
     context = {
         'custom_user': custom_user,
         'health_profile': health_profile,
-        'membership_duration': membership_duration_days  # Use the updated variable here
     }
-    return render(request, 'user_dashboard.html', context)
-
+    return render(request, 'dashboard.html', context)
 
 
 
@@ -61,3 +48,10 @@ def health_profile(request):
         form = HealthProfileForm(instance=health_profile)
 
     return render(request, 'health_profile.html', {'form': form})
+
+@login_required
+def diet(request) :
+    # user = request.user
+    
+    
+    return render(request, 'diet.html')

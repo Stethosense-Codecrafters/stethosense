@@ -78,14 +78,14 @@
   <div class="hero_area">
 
     <div class="hero_bg_box">
-      <img src="{% static 'img/images/hero-bg.png' %}" alt="">
+      <img src="{% static 'img/images/hero-bg.png' %}" class="hero_bg_box">
     </div>
 
     <!-- header section strats -->
     <header class="header_section">
       <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
-          <a class="navbar-brand" href="index.html">
+          <a class="navbar-brand" href="{% url 'home' %}">
             <span>
               Stethosense
             </span>
@@ -104,16 +104,16 @@
                 </button>
               </form>
               <li class="nav-item active">
-                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="about.html"> About</a>
+                <a class="nav-link" href=""> About</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="departments.html">Services</a>
+                <a class="nav-link" href="">Services</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact Us</a>
+                <a class="nav-link" href="">Contact Us</a>
               </li>
 
 
@@ -196,7 +196,7 @@
 
   <!-- client section -->
 
-  <section class="client_section layout_padding-bottom">
+  <!-- <section class="client_section layout_padding-bottom">
     <div class="container">
       <div class="heading_container heading_center ">
         <h2>
@@ -288,7 +288,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!-- end client section -->
 
@@ -332,7 +332,6 @@
             </a>
           </div>
           </div>
-         
           
         <div class="col-md-6 col-lg-3 footer_col">
           <div class="footer_detail">
