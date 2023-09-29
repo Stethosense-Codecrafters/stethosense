@@ -8,34 +8,22 @@ from .models import HealthProfile
 
 from autho.models import CustomUser
 from .models import HealthProfile  
+from .diet import Diet
 
-from datetime import datetime
-
-
-@login_required
 def home_view(request):
     user = request.user  # Get the currently logged-in user
     try:
         custom_user = CustomUser.objects.get(id=user.id)
         health_profile = HealthProfile.objects.get(user=user)
-        today = datetime.now().date()
-        membership_duration = today - user.date_joined.date()
-    
     except (CustomUser.DoesNotExist, HealthProfile.DoesNotExist):
         custom_user = None
         health_profile = None
-        membership_duration = None  # Set membership_duration to None when user or health profile doesn't exist
-
-    # Check if membership_duration is not None before accessing the 'days' attribute
-    membership_duration_days = membership_duration.days if membership_duration is not None else None
 
     context = {
         'custom_user': custom_user,
         'health_profile': health_profile,
-        'membership_duration': membership_duration_days  # Use the updated variable here
     }
-    return render(request, 'user_dashboard.html', context)
-
+    return render(request, 'dashboard.html', context)
 
 
 
@@ -61,3 +49,16 @@ def health_profile(request):
         form = HealthProfileForm(instance=health_profile)
 
     return render(request, 'health_profile.html', {'form': form})
+
+@login_required
+def diet(request):
+    health_profile = None
+    try:
+        health_profile = HealthProfile.objects.get(user=request.user)
+    except HealthProfile.DoesNotExist:
+        redirect('health-profile')
+    
+    if health_profile is not None:
+        diet = Diet(health_profile.height, health_profile.weight, health_profile.gender, health_profile.age)
+        
+    return render(request, 'diet.html', {'diet_plan': diet.get_diet_plan(), 'health_profile': diet.get_health_profile()})   

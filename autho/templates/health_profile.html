@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 
 {% block content %}
-
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-9">
@@ -14,27 +13,38 @@
         {% csrf_token %}
         <div class="form-group">
             <label for="{{ form.allergies.id_for_label }}">Allergies:</label> <br>
-            {{ form.allergies }}
+            <div class="text-area-container">
+                {{ form.allergies }}
+            </div>
         </div>
-        <div class="form-group">
-            <label for="{{ form.height.id_for_label }}">Height</label>
-            {{ form.height }}
+        <div class="row">
+            <div class="form-group col-6">
+                <label for="{{ form.height.id_for_label }}">Height (cm)</label>
+                <div class="">
+                    {{ form.height }}
+                </div>
+            </div>
+            <div class="form-group col-6">
+                <label for="{{ form.weight.id_for_label }}">Weight (kg)</label>
+                <div class="">
+                    {{ form.weight }}
+                </div>
+    
+            </div>
         </div>
-        <div class="form-group">
-            <label for="{{ form.weight.id_for_label }}">Weight</label>
-            {{ form.weight }}
-        </div>
-        <div class="form-group">
-            <label for="{{ form.age.id_for_label }}">Age</label>
-            {{ form.age }}
-        </div>
-        <div class="form-group">
-            <label for="{{ form.gender.id_for_label }}">Sex</label>
-            {{ form.gender }}
-        </div>
-        <div class="form-group">
-            <label for="{{ form.blood_group.id_for_label }}">Blood Group</label>
-            {{ form.blood_group }}
+        <div class="row">
+            <div class="form-group col-4">
+                <label for="{{ form.age.id_for_label }}">Age</label>
+                {{ form.age }}
+            </div>
+            <div class="form-group col-4">
+                <label for="{{ form.gender.id_for_label }}">Gender</label>
+                {{ form.gender }}
+            </div>
+            <div class="form-group col-4">
+                <label for="{{ form.blood_group.id_for_label }}">Blood Group</label>
+                {{ form.blood_group }}
+            </div>
         </div>
         <div class="form-group">
             <label for="{{ form.emergency_contact.id_for_label }}">Emergency Contact</label>
@@ -44,7 +54,6 @@
             <label for="{{ form.profile_picture.id_for_label }}">Profile Picture</label>
             {{ form.profile_picture }}
         </div>
-        
         <button type="submit" class="btn btn-primary">Save</button>
     </form>
 </div>
