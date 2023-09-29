@@ -37,9 +37,6 @@ def home_view(request):
     return render(request, 'user_dashboard.html', context)
 
 
-
-
-
 @login_required
 def health_profile(request):
     user = request.user
