@@ -91,6 +91,9 @@ class CustomPasswordResetView(PasswordResetView):
 def forgot(request) :
     return render(request, 'forgot.html')
 
+def about(request):
+    return render(request, 'about.html')
+
 @login_required
 def update_password(request):
     if request.method == 'POST':

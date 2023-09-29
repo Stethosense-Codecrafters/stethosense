@@ -23,6 +23,7 @@
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{% static 'assets/images/favicon.png" />
     <link rel="stylesheet" href="path-to/node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min.css' %}" />
+    <link rel="shortcut icon" href="{% static 'img/images/favicon.png' %}" type="">
     <style>
       /* Example CSS styles (customize as needed) */
 
@@ -93,7 +94,7 @@ br {
                   </div>
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item preview-item">
+                <a href="{% url 'update-password' %}" class="dropdown-item preview-item">
                   <div class="preview-thumbnail">
                     <div class="preview-icon bg-dark rounded-circle">
                       <i class="mdi mdi-onepassword  text-info"></i>
@@ -477,9 +478,11 @@ br {
                         </div>
                       </div>
                       <div class="col-3">
-                        <div class="icon icon-box-success ">
-                          <span class="mdi mdi-arrow-top-right icon-item"></span>
-                        </div>
+                        <a href="http://127.0.0.1:8000/blog/all-about-medical-id/">
+                          <div class="icon icon-box-success ">
+                            <span class="mdi mdi-arrow-top-right icon-item"></span>
+                          </div>
+                        </a>
                       </div>
                     </div>
                     <h6 class="text-muted font-weight-normal">Meical ID </h6>
@@ -503,9 +506,11 @@ br {
                         </div>
                       </div>
                       <div class="col-3">
-                        <div class="icon icon-box-success">
-                          <span class="mdi mdi-arrow-top-right icon-item"></span>
-                        </div>
+                        <a href="http://127.0.0.1:8000/blog/all-about-bmi/">
+                          <div class="icon icon-box-success">
+                            <span class="mdi mdi-arrow-top-right icon-item"></span>
+                          </div>
+                        </a>
                       </div>
                     </div>
                     {% if health_profile.height or health_profile.weight %}
@@ -567,7 +572,7 @@ br {
               <div class="col-md-4 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Transaction History</h4>
+                    <h4 class="card-title">Medical History</h4>
                     <canvas id="lineChart" style="height:250px"></canvas>
                     <!-- <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
                      <div class="text-md-center text-xl-left">
@@ -696,14 +701,21 @@ br {
               <div class="col-sm-4 grid-margin">
                 <div class="card">
                   <div class="card-body">
-                    <h5>Revenue</h5>
+                    <h5>Last checked Blood Pressure</h5>
                     <div class="row">
                       <div class="col-8 col-sm-12 col-xl-8 my-auto">
                         <div class="d-flex d-sm-block d-md-flex align-items-center">
-                          <h2 class="mb-0">$32123</h2>
-                          <p class="text-success ml-2 mb-0 font-weight-medium">+3.5%</p>
+                          <h2 class="mb-0">
+                            {% if health_profile.blood_pressure %}
+                              {{ health_profile.blood_pressure }}
+                              <p class="text-success ml-2 mb-0 font-weight-medium">+3.5%</p>
+                             
+                            {% else %}
+                              Please add data
+                            {% endif %}
+                          </h2>
                         </div>
-                        <h6 class="text-muted font-weight-normal">11.38% Since last month</h6>
+                        <h6 class="text-muted font-weight-normal">Expected around 120/80 mm Hg</h6>
                       </div>
                       <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
                         <i class="icon-lg mdi mdi-codepen text-primary ml-auto"></i>
@@ -715,14 +727,21 @@ br {
               <div class="col-sm-4 grid-margin">
                 <div class="card">
                   <div class="card-body">
-                    <h5>Sales</h5>
+                    <h5>Last checked Blood Glucose Level</h5>
                     <div class="row">
                       <div class="col-8 col-sm-12 col-xl-8 my-auto">
                         <div class="d-flex d-sm-block d-md-flex align-items-center">
-                          <h2 class="mb-0">$45850</h2>
-                          <p class="text-success ml-2 mb-0 font-weight-medium">+8.3%</p>
+                          <h2 class="mb-0">
+                            {% if health_profile.blood_glucose %}
+                              {{ health_profile.blood_glucose }}
+                              <p class="text-success ml-2 mb-0 font-weight-medium">+8.3%</p>
+                            {% else %}
+                              Please add data
+                            {% endif %}
+                          </h2>
+                          
                         </div>
-                        <h6 class="text-muted font-weight-normal"> 9.61% Since last month</h6>
+                        <h6 class="text-muted font-weight-normal">Expected range 70 and 100 mg/dL </h6>
                       </div>
                       <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
                         <i class="icon-lg mdi mdi-wallet-travel text-danger ml-auto"></i>
@@ -734,15 +753,39 @@ br {
               <div class="col-sm-4 grid-margin">
                 <div class="card">
                   <div class="card-body">
-                    <h5>Purchase</h5>
+                    <h5>Last checked Cholesterol Levels</h5>
                     <div class="row">
                       <div class="col-8 col-sm-12 col-xl-8 my-auto">
                         <div class="d-flex d-sm-block d-md-flex align-items-center">
-                          <h2 class="mb-0">$2039</h2>
-                          <p class="text-danger ml-2 mb-0 font-weight-medium">-2.1% </p>
+                          <h2 class="mb-0">
+                            {% if health_profile.cholesterol %}
+                              {{ health_profile.cholesterol }}
+                              <p class="text-danger ml-2 mb-0 font-weight-medium">-2.1% </p>
+                            {% else %}
+                              Please add data
+                            {% endif %}
+                          </h2>
+                            
+                         
                         </div>
-                        <h6 class="text-muted font-weight-normal">2.27% Since last month</h6>
                       </div>
+                      <h6 class="text-muted font-weight-normal"><ul>
+                        <li><strong>LDL Cholesterol:</strong></li>
+                        <ul>
+                            <li>Ideal: Less than 100 mg/dL</li>
+                            <li>Good: 100-129 mg/dL</li>
+                            <li>Watch: Above 130 mg/dL (consider individual risk)</li>
+                        </ul>
+                        <li><strong>HDL Cholesterol:</strong></li>
+                        <ul>
+                            <li>Higher is better.</li>
+                            <li>Protective: Above 60 mg/dL</li>
+                        </ul>
+                        <li><strong>Total Cholesterol:</strong></li>
+                        <ul>
+                            <li>Desirable: Less than 200 mg/dL</li>
+                        </ul>
+                    </ul></h6>
                       <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
                         <i class="icon-lg mdi mdi-monitor text-success ml-auto"></i>
                       </div>
@@ -751,7 +794,7 @@ br {
                 </div>
               </div>
             </div>
-            <div class="row ">
+            <div class="row">
               <div class="col-12 grid-margin">
                 <div class="card">
                   <div class="card-body">
@@ -767,13 +810,12 @@ br {
                                 </label>
                               </div>
                             </th>
-                            <th> Client Name </th>
-                            <th> Order No </th>
-                            <th> Product Cost </th>
-                            <th> Project </th>
-                            <th> Payment Mode </th>
-                            <th> Start Date </th>
-                            <th> Payment Status </th>
+                            <th>Product Name</th>
+                            <th>Order No</th>
+                            <th>Product Cost</th>
+                            <th>Purchased Date</th>
+                            <th>Payment Mode</th>
+                            <th>Type of Product</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -785,18 +827,12 @@ br {
                                 </label>
                               </div>
                             </td>
-                            <td>
-                              <img src="{% static 'assets/images/faces/face1.jpg' %}" alt="image" />
-                              <span class="pl-2">{{ custom_user.first_name }}</span>
-                            </td>
-                            <td> 02312 </td>
-                            <td> $14,500 </td>
-                            <td> Dashboard </td>
-                            <td> Credit card </td>
-                            <td> 04 Dec 2019 </td>
-                            <td>
-                              <div class="badge badge-outline-success">Approved</div>
-                            </td>
+                            <td>Product 1</td>
+                            <td>001</td>
+                            <td>$50</td>
+                            <td>2023-09-15</td>
+                            <td>Credit Card</td>
+                            <td>Medicine</td>
                           </tr>
                           <tr>
                             <td>
@@ -806,18 +842,12 @@ br {
                                 </label>
                               </div>
                             </td>
-                            <td>
-                              <img src="{% static 'assets/images/faces/face2.jpg' %}" alt="image" />
-                              <span class="pl-2">Estella Bryan</span>
-                            </td>
-                            <td> 02312 </td>
-                            <td> $14,500 </td>
-                            <td> Website </td>
-                            <td> Cash on delivered </td>
-                            <td> 04 Dec 2019 </td>
-                            <td>
-                              <div class="badge badge-outline-warning">Pending</div>
-                            </td>
+                            <td>Product 2</td>
+                            <td>002</td>
+                            <td>$75</td>
+                            <td>2023-09-16</td>
+                            <td>Cash on Delivery</td>
+                            <td>Grocery</td>
                           </tr>
                           <tr>
                             <td>
@@ -827,61 +857,14 @@ br {
                                 </label>
                               </div>
                             </td>
-                            <td>
-                              <img src="{% static 'assets/images/faces/face5.jpg' %}" alt="image" />
-                              <span class="pl-2">Lucy Abbott</span>
-                            </td>
-                            <td> 02312 </td>
-                            <td> $14,500 </td>
-                            <td> App design </td>
-                            <td> Credit card </td>
-                            <td> 04 Dec 2019 </td>
-                            <td>
-                              <div class="badge badge-outline-danger">Rejected</div>
-                            </td>
+                            <td>Product 3</td>
+                            <td>003</td>
+                            <td>$30</td>
+                            <td>2023-09-17</td>
+                            <td>Online Payment</td>
+                            <td>Medicine</td>
                           </tr>
-                          <tr>
-                            <td>
-                              <div class="form-check form-check-muted m-0">
-                                <label class="form-check-label">
-                                  <input type="checkbox" class="form-check-input">
-                                </label>
-                              </div>
-                            </td>
-                            <td>
-                              <img src="{% static 'assets/images/faces/face3.jpg' %}" alt="image" />
-                              <span class="pl-2">Peter Gill</span>
-                            </td>
-                            <td> 02312 </td>
-                            <td> $14,500 </td>
-                            <td> Development </td>
-                            <td> Online Payment </td>
-                            <td> 04 Dec 2019 </td>
-                            <td>
-                              <div class="badge badge-outline-success">Approved</div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <div class="form-check form-check-muted m-0">
-                                <label class="form-check-label">
-                                  <input type="checkbox" class="form-check-input">
-                                </label>
-                              </div>
-                            </td>
-                            <td>
-                              <img src="{% static 'assets/images/faces/face4.jpg' %}" alt="image" />
-                              <span class="pl-2">Sallie Reyes</span>
-                            </td>
-                            <td> 02312 </td>
-                            <td> $14,500 </td>
-                            <td> Website </td>
-                            <td> Credit card </td>
-                            <td> 04 Dec 2019 </td>
-                            <td>
-                              <div class="badge badge-outline-success">Approved</div>
-                            </td>
-                          </tr>
+                          <!-- Add more rows with data as needed -->
                         </tbody>
                       </table>
                     </div>
@@ -889,12 +872,13 @@ br {
                 </div>
               </div>
             </div>
+            
             <div class="row">
               <div class="col-md-6 col-xl-4 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
                     <div class="d-flex flex-row justify-content-between">
-                      <h4 class="card-title">Messages</h4>
+                      <h4 class="card-title">Doctor's Messages</h4>
                       <p class="text-muted mb-1 small">View all</p>
                     </div>
                     <div class="preview-list">
@@ -905,10 +889,11 @@ br {
                         <div class="preview-item-content d-flex flex-grow">
                           <div class="flex-grow">
                             <div class="d-flex d-md-block d-xl-flex justify-content-between">
-                              <h6 class="preview-subject">Leonard</h6>
+                              <h6 class="preview-subject">Patient: Leonard</h6>
                               <p class="text-muted text-small">5 minutes ago</p>
                             </div>
-                            <p class="text-muted">Well, it seems to be working now.</p>
+                            <p class="text-muted">Patient's Condition: Feeling much better today.</p>
+                            <p class="text-success font-weight-bold">Doctor's Guidance: Continue with the prescribed medication and rest.</p>
                           </div>
                         </div>
                       </div>
@@ -919,24 +904,26 @@ br {
                         <div class="preview-item-content d-flex flex-grow">
                           <div class="flex-grow">
                             <div class="d-flex d-md-block d-xl-flex justify-content-between">
-                              <h6 class="preview-subject">Luella Mills</h6>
+                              <h6 class="preview-subject">Patient: Luella Mills</h6>
                               <p class="text-muted text-small">10 Minutes Ago</p>
                             </div>
-                            <p class="text-muted">Well, it seems to be working now.</p>
+                            <p class="text-muted">Patient's Condition: Experiencing some relief from pain.</p>
+                            <p class="text-success font-weight-bold">Doctor's Guidance: Continue with pain management techniques as discussed.</p>
                           </div>
                         </div>
                       </div>
                       <div class="preview-item border-bottom">
                         <div class="preview-thumbnail">
-                          <img src="{% static 'assets/images/faces/face9.jpg' %}" alt="image" class="rounded-circle" />
+                          <img src="{% static 'assets/images/faces/face9.jpg' %}" alt="image" class=" rounded-circle" />
                         </div>
                         <div class="preview-item-content d-flex flex-grow">
                           <div class="flex-grow">
                             <div class="d-flex d-md-block d-xl-flex justify-content-between">
-                              <h6 class="preview-subject">Ethel Kelly</h6>
+                              <h6 class="preview-subject">Patient: Ethel Kelly</h6>
                               <p class="text-muted text-small">2 Hours Ago</p>
                             </div>
-                            <p class="text-muted">Please review the tickets</p>
+                            <p class="text-muted">Patient's Condition: Fever and fatigue persisting.</p>
+                            <p class="text-warning font-weight-bold">Doctor's Recommendation: Schedule an in-person appointment for a detailed examination and tests.</p>
                           </div>
                         </div>
                       </div>
@@ -947,10 +934,11 @@ br {
                         <div class="preview-item-content d-flex flex-grow">
                           <div class="flex-grow">
                             <div class="d-flex d-md-block d-xl-flex justify-content-between">
-                              <h6 class="preview-subject">Herman May</h6>
+                              <h6 class="preview-subject">Patient: Herman May</h6>
                               <p class="text-muted text-small">4 Hours Ago</p>
                             </div>
-                            <p class="text-muted">Thanks a lot. It was easy to fix it .</p>
+                            <p class="text-muted">Patient's Condition: Completely recovered from the recent illness.</p>
+                            <p class="text-success font-weight-bold">Doctor's Guidance: Continue a healthy lifestyle and regular check-ups.</p>
                           </div>
                         </div>
                       </div>
@@ -958,26 +946,42 @@ br {
                   </div>
                 </div>
               </div>
+       
               <div class="col-md-6 col-xl-4 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Portfolio Slide</h4>
-                    <div class="owl-carousel owl-theme full-width owl-carousel-dash portfolio-carousel" id="owl-carousel-basic">
+                    <h4 class="card-title">Latest Blogs</h4>
+                    <div class="owl-carousel owl-theme full-width owl-carousel-dash blog-carousel" id="owl-carousel-basic">
                       <div class="item">
-                        <img src="{% static 'assets/images/dashboard/Rectangle.jpg' %}" alt="">
+                        <img src="{% static 'assets/images/blog/blog1.jpg' %}" alt="Blog 1">
+                        <div class="blog-content">
+                          <h5>Discover the Secrets of Healthy Living</h5>
+                          <p>Explore the key to maintaining a balanced and healthy lifestyle. Learn about nutrition, fitness, and mental well-being.</p>
+                          <a href="#" class="btn btn-primary">Read More</a>
+                        </div>
                       </div>
                       <div class="item">
-                        <img src="{% static 'assets/images/dashboard/Img_5.jpg' %}" alt="">
+                        <img src="{% static 'assets/images/blog/blog2.jpg' %}" alt="Blog 2">
+                        <div class="blog-content">
+                          <h5>The Benefits of Regular Exercise</h5>
+                          <p>Discover the positive impact of incorporating regular exercise into your daily routine. Stay active and energized.</p>
+                          <a href="#" class="btn btn-primary">Read More</a>
+                        </div>
                       </div>
                       <div class="item">
-                        <img src="{% static 'assets/images/dashboard/img_6.jpg' %}" alt="">
+                        <img src="{% static 'assets/images/blog/blog3.jpg' %}" alt="Blog 3">
+                        <div class="blog-content">
+                          <h5>Mindfulness and Stress Reduction</h5>
+                          <p>Learn the art of mindfulness and how it can help reduce stress and improve your overall mental health.</p>
+                          <a href="#" class="btn btn-primary">Read More</a>
+                        </div>
                       </div>
                     </div>
                     <div class="d-flex py-4">
                       <div class="preview-list w-100">
                         <div class="preview-item p-0">
                           <div class="preview-thumbnail">
-                            <img src="{% static 'assets/images/faces/face12.jpg' %}" class="rounded-circle" alt="">
+                            <img src="{% static 'assets/images/faces/face12.jpg' %}" class="rounded-circle" alt="Author">
                           </div>
                           <div class="preview-item-content d-flex flex-grow">
                             <div class="flex-grow">
@@ -985,25 +989,27 @@ br {
                                 <h6 class="preview-subject">CeeCee Bass</h6>
                                 <p class="text-muted text-small">4 Hours Ago</p>
                               </div>
-                              <p class="text-muted">Well, it seems to be working now.</p>
+                              <p class="text-muted">Enjoying the latest blog posts and sharing valuable insights with the community.</p>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <p class="text-muted">Well, it seems to be working now. </p>
-                    <div class="progress progress-md portfolio-progress">
-                      <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    <p class="text-muted">Stay updated with our latest blog posts covering a variety of health and wellness topics.</p>
+                    <div class="progress progress-md blog-progress">
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                   </div>
                 </div>
               </div>
+              
+              
               <div class="col-md-12 col-xl-4 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">To do list</h4>
+                    <h4 class="card-title">Medical Task List</h4>
                     <div class="add-items d-flex">
-                      <input type="text" class="form-control todo-list-input" placeholder="enter task..">
+                      <input type="text" class="form-control todo-list-input" placeholder="Enter a medical task..">
                       <button class="add btn btn-primary todo-list-add-btn">Add</button>
                     </div>
                     <div class="list-wrapper">
@@ -1011,35 +1017,35 @@ br {
                         <li>
                           <div class="form-check form-check-primary">
                             <label class="form-check-label">
-                              <input class="checkbox" type="checkbox"> Create invoice </label>
+                              <input class="checkbox" type="checkbox"> Schedule an appointment with Dr. Smith </label>
                           </div>
                           <i class="remove mdi mdi-close-box"></i>
                         </li>
                         <li>
                           <div class="form-check form-check-primary">
                             <label class="form-check-label">
-                              <input class="checkbox" type="checkbox"> Meeting with Alita </label>
+                              <input class="checkbox" type="checkbox"> Take medication at 9:00 AM </label>
                           </div>
                           <i class="remove mdi mdi-close-box"></i>
                         </li>
                         <li class="completed">
                           <div class="form-check form-check-primary">
                             <label class="form-check-label">
-                              <input class="checkbox" type="checkbox" checked> Prepare for presentation </label>
+                              <input class="checkbox" type="checkbox" checked> Review lab test results </label>
                           </div>
                           <i class="remove mdi mdi-close-box"></i>
                         </li>
                         <li>
                           <div class="form-check form-check-primary">
                             <label class="form-check-label">
-                              <input class="checkbox" type="checkbox"> Plan weekend outing </label>
+                              <input class="checkbox" type="checkbox"> Attend physical therapy session </label>
                           </div>
                           <i class="remove mdi mdi-close-box"></i>
                         </li>
                         <li>
                           <div class="form-check form-check-primary">
                             <label class="form-check-label">
-                              <input class="checkbox" type="checkbox"> Pick up kids from school </label>
+                              <input class="checkbox" type="checkbox"> Update medical records </label>
                           </div>
                           <i class="remove mdi mdi-close-box"></i>
                         </li>
@@ -1048,86 +1054,95 @@ br {
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-12">
-                <div class="card">
-                  <div class="card-body">
-                    <h4 class="card-title">Visitors by Countries</h4>
-                    <div class="row">
-                      <div class="col-md-5">
-                        <div class="table-responsive">
-                          <table class="table">
-                            <tbody>
-                              <tr>
-                                <td>
-                                  <i class="flag-icon flag-icon-us"></i>
-                                </td>
-                                <td>USA</td>
-                                <td class="text-right"> 1500 </td>
-                                <td class="text-right font-weight-medium"> 56.35% </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <i class="flag-icon flag-icon-de"></i>
-                                </td>
-                                <td>Germany</td>
-                                <td class="text-right"> 800 </td>
-                                <td class="text-right font-weight-medium"> 33.25% </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <i class="flag-icon flag-icon-au"></i>
-                                </td>
-                                <td>Australia</td>
-                                <td class="text-right"> 760 </td>
-                                <td class="text-right font-weight-medium"> 15.45% </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <i class="flag-icon flag-icon-gb"></i>
-                                </td>
-                                <td>United Kingdom</td>
-                                <td class="text-right"> 450 </td>
-                                <td class="text-right font-weight-medium"> 25.00% </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <i class="flag-icon flag-icon-ro"></i>
-                                </td>
-                                <td>Romania</td>
-                                <td class="text-right"> 620 </td>
-                                <td class="text-right font-weight-medium"> 10.25% </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <i class="flag-icon flag-icon-br"></i>
-                                </td>
-                                <td>Brasil</td>
-                                <td class="text-right"> 230 </td>
-                                <td class="text-right font-weight-medium"> 75.00% </td>
-                              </tr>
-                            </tbody>
-                          </table>
+              
+              <div class="row">
+                <div class="col-12">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">Patient Demographics by Countries</h4>
+                      <div class="row">
+                        <div class="col-md-5">
+                          <div class="table-responsive">
+                            <table class="table">
+                              <tbody>
+                                <tr>
+                                  <td>
+                                    <i class="flag-icon flag-icon-us"></i>
+                                  </td>
+                                  <td>United States</td>
+                                  <td class="text-right"> 1500 </td>
+                                  <td class="text-right font-weight-medium"> 56.35% </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <i class="flag-icon flag-icon-de"></i>
+                                  </td>
+                                  <td>Germany</td>
+                                  <td class="text-right"> 800 </td>
+                                  <td class="text-right font-weight-medium"> 33.25% </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <i class="flag-icon flag-icon-au"></i>
+                                  </td>
+                                  <td>Australia</td>
+                                  <td class="text-right"> 760 </td>
+                                  <td class="text-right font-weight-medium"> 15.45% </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <i class="flag-icon flag-icon-gb"></i>
+                                  </td>
+                                  <td>United Kingdom</td>
+                                  <td class="text-right"> 450 </td>
+                                  <td class="text-right font-weight-medium"> 25.00% </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <i class="flag-icon flag-icon-ro"></i>
+                                  </td>
+                                  <td>Romania</td>
+                                  <td class="text-right"> 620 </td>
+                                  <td class="text-right font-weight-medium"> 10.25% </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <i class="flag-icon flag-icon-br"></i>
+                                  </td>
+                                  <td>Brazil</td>
+                                  <td class="text-right"> 230 </td>
+                                  <td class="text-right font-weight-medium"> 75.00% </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                        <div class="col-md-7">
+                          <div id="audience-map" class="vector-map"></div>
                         </div>
                       </div>
-                      <div class="col-md-7">
-                        <div id="audience-map" class="vector-map"></div>
+                      <div class="text-muted mt-4">
+                        This data represents patient demographics based on their home countries. The majority of patients are from the United States (56.35%), followed by Germany (33.25%), Australia (15.45%), the United Kingdom (25.00%), Romania (10.25%), and Brazil (75.00%).
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+              
+            
           </div>
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
           <footer class="footer">
             <div class="d-sm-flex justify-content-center justify-content-sm-between">
-              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
-              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin templates</a> from Bootstrapdash.com</span>
+              <p> Stethosense
+                &copy; <span id="displayYear">2023</span> All Rights Reserved By
+                (Template by <a href="https://www.bootstrapdash.com/bootstrap-admin-template/">bootstrapdash.com</a>)
+              </p>
             </div>
           </footer>
+
+          
           <!-- partial -->
         </div>
         <!-- main-panel ends -->

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'autho',  
     'user',
     'rest_framework',
+    'blogs',
 ]
 
 MIDDLEWARE = [

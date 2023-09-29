@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
 
@@ -10,27 +12,35 @@
   <!-- Site Metas -->
   <meta name="keywords" content="" />
   <meta name="description" content="" />
-  <meta name="author" content="" />
-  <link rel="shortcut icon" href="images/favicon.png" type="">
+  <meta name="author" content="github.com/aioont" />
+  <link rel="shortcut icon" href="{% static 'img/images/favicon.png' %}" type="">
 
-  <title> Orthoc </title>
+  <title> Stethosense </title>
 
   <!-- bootstrap core css -->
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/css-new/bootstrap.css' %}" />
 
   <!-- fonts style -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
 
   <!--owl slider stylesheet -->
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
 
   <!-- font awesome style -->
-  <link href="css/font-awesome.min.css" rel="stylesheet" />
+  <link href="{% static 'css/css-new/font-awesome.min.css' %}" rel="stylesheet" />
 
   <!-- Custom styles for this template -->
-  <link href="css/style.css" rel="stylesheet" />
+  <link href="{% static 'css/css-new/style.css' %}" rel="stylesheet" />
   <!-- responsive style -->
-  <link href="css/responsive.css" rel="stylesheet" />
+  <link href="{% static 'css/css-new/responsive.css' %}" rel="stylesheet" />
+  <!--Carousel links-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Add custom CSS for rounded text boxes and background -->
+
 
 </head>
 
@@ -238,23 +248,25 @@
           <a href="https://html.design/">Stethosense</a> (Template by <a href="https://themewagon.com/">ThemeWagon</a>)
         </p>
       </div>
+      
     </div>
-  </footer>
-  <!-- footer section -->
+    </footer>
+    <!-- footer section -->
 
-  <!-- jQery -->
-  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-  <!-- popper js -->
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-  </script>
-  <!-- bootstrap js -->
-  <script type="text/javascript" src="js/bootstrap.js"></script>
-  <!-- owl slider -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
-  </script>
-  <!-- custom js -->
-  <script type="text/javascript" src="js/custom.js"></script>
+    <!-- jQery -->
+    <script type="text/javascript" src="{% static 'js/js-new/jquery-3.4.1.min.js' %}"></script>
+    <!-- popper js -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+      </script>
+    <!-- bootstrap js -->
+    <script type="text/javascript" src="{% static 'js/js-new/bootstrap.js' %}"></script>
+    <!-- owl slider -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+    </script>
+    <!-- custom js -->
+    <script type="text/javascript" src="{% static 'js/js-new/custom.js' %}"></script>
+  
 
-</body>
-
-</html>
+  </body>
+  </html>
