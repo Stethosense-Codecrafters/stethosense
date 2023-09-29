@@ -10,6 +10,7 @@ from autho.models import CustomUser
 from .models import HealthProfile  
 from .diet import Diet
 
+@login_required
 def home_view(request):
     user = request.user  # Get the currently logged-in user
     try:
@@ -23,7 +24,7 @@ def home_view(request):
         'custom_user': custom_user,
         'health_profile': health_profile,
     }
-    return render(request, 'dashboard.html', context)
+    return render(request, 'user_dashboard.html', context)
 
 
 
