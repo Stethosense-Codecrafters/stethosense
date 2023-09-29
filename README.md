@@ -31,7 +31,7 @@ Stethosense is open-source software licensed under the [MIT License](LICENSE).
 
 ## Code of Conduct
 
-Please read our [Code of Conduct](CODE_OF_CONDUCT.md) to understand our community standards.
+Please read our [Code of Conduct](documentation/CODE_OF_CONDUCT.md) to understand our community standards.
 
 ## Contact and Support
 
