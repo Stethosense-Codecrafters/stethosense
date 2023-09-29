@@ -39,11 +39,11 @@ def loginPage(request):
         if user is not None:
             login(request, user)
             try:
-                health_profile = HealthProfile.objects.get(user=user)
-                return redirect(reverse('home'))
+                # health_profile = HealthProfile.objects.get(user=user)
+                return redirect(reverse('user-home'))
             except HealthProfile.DoesNotExist:
                 return redirect(reverse('health-profile'))
-            return redirect(reverse('home'))
+            # return redirect(reverse('home'))
         else:
             messages.info(request, 'Password or Username is incorrect')
             return render(request, 'login.html')

@@ -13,6 +13,7 @@ class HealthProfile(models.Model):
     height = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True, help_text="Height in centimeters")
     weight = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True, help_text="Weight in kilograms")
     age = models.PositiveIntegerField(blank=True, null=True)
+    
     calories = models.FloatField(blank=True, null=True, help_text="Daily calorie requirements")
     GENDER_CHOICES = (
         ('M', 'Male'),
