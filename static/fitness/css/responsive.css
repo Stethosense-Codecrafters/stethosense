@@ -1,0 +1,379 @@
+/*--------------------------------------------------------------------- 
+File Name: responsive.css 
+---------------------------------------------------------------------*/
+
+@media (min-width: 1343px) and (max-width: 1500px) {
+  
+    #banner1 .carousel-control-prev {
+    left: 11.5%;
+    }
+    #myCarousel .carousel-control-prev {
+    left: 2%;
+    }
+    #myCarousel .carousel-control-next {
+    right: 2%;
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1342px) {
+  .full_bg {
+        height: 100%;
+    }
+  .header-area::before { 
+    width: 72%;
+  }
+  #banner1 .carousel-control-prev, #banner1 .carousel-control-next {
+  top: 93%;
+}
+  #banner1 .carousel-control-prev {
+    left: 11.5%;
+    }
+    #myCarousel .carousel-control-prev {
+    left: 1%;
+    }
+    #myCarousel .carousel-control-next {
+    right: 1%;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+   .full_bg {
+        height: 100%;
+    }
+    .header-area::before { 
+    width: 75%;
+  }
+  .site-navbar ul li {
+    padding-right: 47px;
+}
+ul.email li {
+
+    padding-right: 70px;
+}
+.creative h1 {
+  padding-bottom: 19px;
+}
+ #banner1 .carousel-control-prev, #banner1 .carousel-control-next {
+  top: 93%;
+}
+  #banner1 .carousel-control-prev {
+    left: 10%;
+    }
+    #myCarousel .carousel-control-prev {
+    left: 1%;
+    }
+    #myCarousel .carousel-control-next {
+    right: 1%;
+    }
+    .about_img figure img {
+      padding-right: 10px;
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .full_bg {
+        height: 100%;
+    }
+  .header-area {
+    padding: 44px 0px;
+  }
+  .header-area::before { 
+    width: 75%;
+  }
+  .site-navbar ul li {
+    padding-right: 15px;
+  }
+  ul.email li {
+    padding-right: 70px;
+  }
+  .creative h1 {
+    padding-bottom: 19px;
+  }
+  #banner1 .carousel-control-prev, #banner1 .carousel-control-next {
+  top: 93%;
+}
+  #banner1 .carousel-control-prev {
+    left: 8%;
+  }
+  #myCarousel .carousel-control-prev {
+    left: 1%;
+  }
+  #myCarousel .carousel-control-next {
+    right: 1%;
+  }
+  .about_img figure img {
+      padding-right: 10px;
+  }
+  .seren h3 {
+    font-size: 35px;
+    line-height: 45px;
+  }
+  .cho_icon {
+    width: 160px;
+    height: 160px;
+    line-height: 160px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+    .full_bg {
+        height: 100%;
+    }
+    .d_none {
+    display: none;
+    }
+    .creative {
+        padding-bottom: 30px;
+    }
+    .header-area {
+    padding: 44px 0px;
+  }
+  .header-area::before {
+    width: 100%;
+    right: 0px;
+    border-radius: 0px 0px 70px 70px;
+}
+  .site-navbar ul li {
+    padding-right: 15px;
+  }
+  ul.email li {
+    padding-right: 70px;
+  }
+  .creative h1 {
+    padding-bottom: 19px;
+    font-size: 70px;
+    line-height: 70px;
+}
+.creative p {
+  padding-bottom: 45px;
+}
+#banner1 .carousel-control-prev, #banner1 .carousel-control-next {
+  top: 93%;
+}
+  #banner1 .carousel-control-prev {
+    left: 8%;
+  }
+  #banner1 .carousel-control-next {
+    left: 20.4%;
+  }
+  #myCarousel .carousel-control-prev {
+    left: 1%;
+  }
+  #myCarousel .carousel-control-next {
+    right: 1%;
+  }
+  
+  .about_img figure img {
+      padding-right: 10px;
+  }
+  .about .titlepage {
+    max-width: inherit;
+    padding-bottom: 30px;
+  }
+  .choose {
+    background-size: 100%;
+  }
+
+  .our_class {padding-top: 50px;}
+  .chose_text {
+    display: inherit;
+  }
+  .seren h3 {
+    font-size: 23px;
+    line-height: 30px;
+    padding-top: 20px;
+  }
+  .tranner_box.text_align_left {
+    max-width: 344px;
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+ 
+  .copyright p {
+    text-align: center;
+  }
+  ul.social_icon {
+    padding-top: 30px;
+    text-align: center;
+  }
+    /* navbar css for mobile start */
+    .navbar-area {
+    margin-bottom: -10px;
+    }
+    .nav-toggler {
+        display: block;
+        position: absolute;
+        right: 15px;
+        z-index: 99999;
+    }
+    .site-navbar {
+    min-height: 50px;
+   }
+    .site-navbar ul {
+        position: absolute;
+        width: 100%;
+        left: 0px;
+        top: 61px;
+        flex-direction: column;
+        align-items: center;
+        background-color: #e50444;
+        max-height: 0;
+        overflow: hidden;
+        transition: .3s;
+        z-index: 99999;
+    
+    }
+    .site-navbar ul li {
+        width: 100%;
+        text-align: left;
+        padding-right: 0;
+    }
+    .site-navbar ul li a {
+    padding: 14px 25px 10px 25px;
+}
+    .site-navbar ul.open {
+        max-height: 100vh;
+        overflow: visible;
+    }
+    /* navbar css for mobile end */
+
+}
+
+@media (max-width: 575px) {
+   .full_bg {
+        height: 100%;
+    }
+    .d_none {
+    display: none;
+    }
+    .creative {
+        padding-bottom: 30px;
+    }
+    .header-area {
+    padding: 44px 0px;
+  }
+  .header-area::before {
+    width: 100%;
+    right: 0px;
+    border-radius: 0px 0px 70px 70px;
+}
+  .site-navbar ul li {
+    padding-right: 15px;
+  }
+  ul.email li {
+    padding-right: 70px;
+  }
+.creative h1 {
+    padding-bottom: 19px;
+    font-size: 45px;
+    line-height: 50px;
+}
+.creative p {
+  padding-bottom: 45px;
+}
+.creative .read_more {
+    max-width: 139px;
+    line-height: 55px;
+    height: 55px;
+    font-size: 14px;
+    margin-right: 1px;
+}
+#banner1 .carousel-control-prev, #banner1 .carousel-control-next {
+  top: 93%;
+}
+  #banner1 .carousel-control-prev {
+    left: 8%;
+  }
+  #banner1 .carousel-control-next {
+    left: 30.4%;
+  }
+  #myCarousel .carousel-control-prev {
+    left: 1%;
+  }
+  #myCarousel .carousel-control-next {
+    right: 1%;
+  }
+  #myCarousel .carousel-control-prev, #myCarousel .carousel-control-next {
+    top: 88%;
+  }
+  .about_img figure img {
+      padding-right: 0px;
+  }
+  .about .titlepage {
+    max-width: inherit;
+    padding-bottom: 30px;
+  }
+  .choose {
+    background-size: 100%;
+  }
+  .custom p {padding: 67px 20px;}
+  .our_class {padding-top: 50px;}
+  .chose_text {
+    display: inherit;
+  }
+.seren h3 {
+    font-size: 23px;
+    line-height: 35px;
+    padding-top: 20px;
+}
+  .tranner_box.text_align_left {
+
+    max-width: 344px;
+    margin: 0 auto;
+    margin-top: 30px;
+
+  }
+ 
+  .copyright p {
+    text-align: center;
+  }
+  ul.social_icon {
+    padding-top: 30px;
+    text-align: center;
+  }
+ .titlepage h2 {
+    font-size: 37px;
+    line-height: 45px;
+}
+    /* navbar css for mobile start */
+    .navbar-area {
+        margin-top: -41px;
+    }
+    .nav-toggler {
+        display: block;
+        position: absolute;
+        right: 15px;
+        z-index: 99999;
+    }
+    .site-navbar {
+        min-height: 0px;
+    }
+    .site-navbar ul {
+        position: absolute;
+        width: 100%;
+        left: 0px;
+        top: 20px;
+        flex-direction: column;
+        align-items: center;
+        background-color: #e50444;
+        max-height: 0;
+        overflow: hidden;
+        transition: .3s;
+        z-index: 99999;
+    
+    }
+    .site-navbar ul li {
+        width: 100%;
+        text-align: left;
+        padding-right: 0;
+    }
+    .site-navbar ul li a {
+    padding: 14px 25px 10px 25px;
+}
+    .site-navbar ul.open {
+        max-height: 100vh;
+        overflow: visible;
+    }
+
+}

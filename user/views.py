@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from .forms import HealthProfileForm
+from .forms import HealthProfileForm, HealthProfilePSCForm
 from .models import HealthProfile
 
 # Create your views here.
@@ -9,6 +9,7 @@ from .models import HealthProfile
 from autho.models import CustomUser
 from .models import HealthProfile  
 from .diet import Diet
+from django.contrib import messages
 
 @login_required
 def home_view(request):
@@ -63,3 +64,29 @@ def diet(request):
         diet = Diet(health_profile.height, health_profile.weight, health_profile.gender, health_profile.age)
         
     return render(request, 'diet.html', {'diet_plan': diet.get_diet_plan(), 'health_profile': diet.get_health_profile()})   
+
+
+
+@login_required
+def health_profile_psc_form(request):
+    # Check if the user already has a HealthProfile
+    try:
+        health_profile = HealthProfile.objects.get(user=request.user)
+    except HealthProfile.DoesNotExist:
+        health_profile = None
+
+    if request.method == 'POST':
+        form = HealthProfilePSCForm(request.POST, instance=health_profile)
+        if form.is_valid():
+            # Associate the health profile with the logged-in user
+            health_profile = form.save(commit=False)
+            health_profile.user = request.user
+            health_profile.save()
+            
+            return redirect('user-home')  # Redirect to a success page
+    else:
+        form = HealthProfilePSCForm(instance=health_profile)
+
+    return render(request, 'health_profile_psc_form.html', {'form': form})
+
+

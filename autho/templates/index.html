@@ -88,10 +88,14 @@
               </li>
 
 
-
               <li class="nav-item">
-                <a class="nav-link" href="login/">Login</a>
-              </li>
+              {% if user.is_authenticated %}
+                  <a href="{% url 'user-home' %}" class="nav-link">Dashboard</a>
+              {% else %}
+                  <a href="{% url 'login' %}" class="nav-link">Login</a>
+              {% endif %}
+             </li>
+
 
             </ul>
           </div>

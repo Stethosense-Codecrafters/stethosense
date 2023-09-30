@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'user',
     'rest_framework',
     'blogs',
+    'fitness',
 ]
 
 MIDDLEWARE = [

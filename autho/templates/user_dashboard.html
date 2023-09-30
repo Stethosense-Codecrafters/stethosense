@@ -44,6 +44,29 @@ br {
     font-size: 16px;
     font-weight: bold;
 }
+.parent-div {
+    text-align: center;
+}
+
+.update {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff; 
+    text-decoration: none; 
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
+}
+
+
+.update:hover {
+    background-color: #0056b3; 
+    color: #fff;
+    text-decoration: none;
+}
+
 
     </style>
   </head>
@@ -130,7 +153,7 @@ br {
             <span class="nav-link">Navigation</span>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="{% url 'home' %}">
+            <a class="nav-link" href="{% url 'user-home' %}">
               <span class="menu-icon">
                 <i class="mdi mdi-speedometer"></i>
               </span>
@@ -154,7 +177,7 @@ br {
             </div>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="pages/forms/basic_elements.html">
+            <a class="nav-link" href="{% url 'fitness_dashboard' %}">
               <span class="menu-icon">
                 <i class="mdi mdi-playlist-play"></i>
               </span>
@@ -162,7 +185,7 @@ br {
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="pages/tables/basic-table.html">
+            <a class="nav-link" href="{% url 'diet' %}">
               <span class="menu-icon">
                 <i class="mdi mdi-table-large"></i>
               </span>
@@ -721,6 +744,10 @@ br {
                         <i class="icon-lg mdi mdi-codepen text-primary ml-auto"></i>
                       </div>
                     </div>
+                    <div class="parent-div">
+                      <a href="{% url 'collect-health-data' %}" class="update">Update data</a>
+                    </div>
+                  
                   </div>
                 </div>
               </div>
@@ -747,6 +774,9 @@ br {
                         <i class="icon-lg mdi mdi-wallet-travel text-danger ml-auto"></i>
                       </div>
                     </div>
+                    <div class="parent-div">
+                      <a href="{% url 'collect-health-data' %}" class="update">Update data</a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -765,8 +795,7 @@ br {
                               Please add data
                             {% endif %}
                           </h2>
-                            
-                         
+                    
                         </div>
                       </div>
                       <h6 class="text-muted font-weight-normal"><ul>
@@ -789,6 +818,9 @@ br {
                       <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
                         <i class="icon-lg mdi mdi-monitor text-success ml-auto"></i>
                       </div>
+                    </div>
+                    <div class="parent-div">
+                      <a href="{% url 'collect-health-data' %}" class="update">Update data</a>
                     </div>
                   </div>
                 </div>

@@ -23,3 +23,30 @@ class HealthProfileForm(forms.ModelForm):
             'emergency_contact',
             'profile_picture',
         ]
+
+class HealthProfilePSCForm(forms.ModelForm):
+    blood_pressure = forms.CharField(
+        widget=forms.TextInput(
+            attrs={'class': 'form-control', 'placeholder': 'Enter your blood pressure, e.g., "120/80 mm Hg"'},
+        ),
+        label='Blood Pressure'
+    )
+
+    blood_glucose = forms.DecimalField(
+        widget=forms.TextInput(
+            attrs={'class': 'form-control', 'placeholder': 'Enter your blood glucose level, e.g., "5.4"'},
+        ),
+        label='Blood Glucose Level'
+    )
+
+    cholesterol = forms.JSONField(
+        widget=forms.TextInput(
+            attrs={'class': 'form-control', 'placeholder': 'Enter cholesterol levels as JSON, e.g., {"hdl": 50, "ldl": 100}'},
+        )
+    )
+
+    class Meta:
+        model = HealthProfile
+        fields = ['blood_pressure', 'blood_glucose', 'cholesterol']
+
+
