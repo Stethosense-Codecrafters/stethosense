@@ -1,0 +1,374 @@
+html{
+	scroll-behavior: smooth;
+}
+
+#navstyle{
+	background-color: #24a19c;
+	color: #FFFFF0;
+	background-image: linear-gradient(90deg, #24a19c 0%, #cedebd 100%);
+
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+.covidButton{
+	background-color:#ed6663 ;
+}
+.covidButton:hover{
+	background-color: #b43634 ;
+}
+.img1, .img2, .img3{
+	position: relative;
+	opacity: 0.90;
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+.img1{
+	background-image: url('../Images/doctor_mid.jpg');
+	min-height: 600px;
+}
+.img2{
+	background-image: url('../Images/search_bar.jpg');
+	min-height: 500px;
+}
+.img3{
+	background-image: url('../Images/mail_us.jpg');
+	min-height: 500px;
+}
+.img4{
+	min-height: 500px;
+	position: relative;
+	background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.6)
+    ),
+    url('../Images/bhu.jpeg');
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+.transparent{
+	margin-left: 100px;
+	margin-right: 100px;
+}
+.transparent p{
+	font-size: 25px;
+	font-family: 'Ubuntu';
+	color: white;
+	font-weight: bold;
+	z-index: 2;
+}
+.section{
+	text-align: center;
+	padding: 50px 80px;
+}
+.section-light{
+	background-color: #f4f4f2;
+	color: black;
+}
+.section-dark{
+	background-color: #373a40;
+	color: white;
+}
+.features ul li{
+	list-style: none;
+}
+.mainpage-text{
+	position: absolute;
+	top: 50%;
+	width: 100%;
+	opacity: 1.0;
+	text-align: center;
+	color: black;
+	font-size: 50px;
+	font-family: 'Pacifico';
+}
+.mainpage-head{
+	font-size: 60px;
+	position: absolute;
+	width: 100%;
+	top: 40%;
+	font-family: 'Cinzel';
+	text-align: center;
+	color: black;
+	opacity: 1.0;
+	font-weight: bold;
+}
+.main_container{
+	width: 100%;
+}
+.bhu_image{
+	height:40vh;
+	margin:50px 0px;
+	display: block;
+	border: 2px solid black;
+	border-radius: 15px;
+}
+.display{
+	font-size:4.5rem;
+	font-weight: 300;
+	line-height: 1.2;
+	font-family: Cinzel;
+}
+.paragraph{
+	font-size: 25px;
+	margin:auto;
+	font-family: 'Ubuntu';
+}
+.team a{
+	text-decoration: none;
+	color:  #f4f4f2;
+	font-weight: bold;
+}
+.team ul li{
+	color: rgba(230,230,230,0.9);
+	list-style: none;
+	padding: 20px 15px;
+	font-size: 20px;
+}
+.team_img{
+	height: 150px;
+	width: 150px;
+	border-radius: 50%;
+	border: 5px solid #f4f4f2;
+	object-fit: cover;
+}
+.search-field{
+	font-size: 25px;
+	margin: 25px;
+	width: 400px;
+	padding: 20px;
+	font-family: 'Georgia';
+	border: 2px solid black;
+	border-radius: 15px;
+}
+/* .slider{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 120vh;
+	background: #DEB887;
+	z-index: -1;
+} */
+#navbar-list-items > li > a{
+	color:white;
+}
+#navbar-list-items > li{
+	padding: auto;
+	border-radius: 0.7em;
+	margin: auto 2px;
+	height: fit-content;
+}
+#navbar-list-items > li:hover{
+	background-color:  #ed6663;
+}
+#navbar-list-items > li:hover{
+	background-color:  #ed6663;
+}
+.waves {
+	position: relative;
+	width: 100%;
+	height: 15vh;
+	margin-bottom: -7px;
+	/*Fix for safari gap*/
+	min-height: 100px;
+	max-height: 150px;
+}
+
+/*.popup{
+background: rgba(0,0,0,0.6);
+width: 100%;
+height: 100%;
+position: absolute;
+top: 0;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.popup-content{
+background: #e4e4e4;
+height: 300px;
+width: 500px;
+padding: 20px;
+border-radius: 5px;
+position: relative;
+}*/
+.modal-notify .modal-header {
+	border-radius: 3px 3px 0 0;
+}
+.modal-notify  {
+	border-radius: 3px;
+}
+.content-box{
+	display:grid;
+	grid-template-columns: 3fr 2fr;
+	grid-auto-rows: minmax(100px,auto);
+	grid-gap:2em;
+	margin: 2em;
+}
+.content-box > div{
+	background:#eee;
+	padding:1.5em;
+}
+.content-box > div:nth-child(odd){
+	background:#ddd;
+}
+.modal-content{
+	background-color:#FFF;
+	border-radius: 12px 42px;
+	width:fit-content;
+	top: 2px;
+}
+
+#signincard{
+	background-color: transparent;
+	border-width: 0.75em;
+	border-color: #24a19c;
+	border-radius: 10px 40px; width: 22em;
+	padding-right: 2.5em;
+	padding-left: 2.5em;
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+.form-control {
+	color: rgb(0, 0, 0);
+	border-width:1px;
+	border-color: #696969;
+	background-color: rgb(255, 246, 241);
+}
+.form-control:focus {
+	
+	background-color: rgb(252, 250, 233);
+	
+}
+.custom-control-input:checked ~.custom-control-label::before {
+	background-color: rgb(14, 192, 59);
+}
+
+#submit-btn{
+	color: rgb(0, 0, 0);
+	text-transform: uppercase;
+	border-radius: 1em;
+	background: #66ec44;
+	align-items: center;
+	padding: 0.35em 0.75em;
+}
+#submit-btn:hover {
+	background: #919e9e;
+}
+body{
+	background: linear-gradient(90deg, #24a19c,#cedebd);
+}
+.logoimg{
+	width:400px;
+	transition: transform .2s;
+	margin:auto;
+}
+.logoimg:hover{
+	transform: scale(1.1);
+}
+
+#signupcard{
+	display:grid;
+	grid-template-columns: 40% 60%;
+	background-color: #FFF;
+	border-radius: 2em;
+	padding: 0em 2em 0em 2em;
+	width: 60em;
+	margin: auto;
+}
+.card{
+	background-color: transparent;
+	/* background-color: rgb(248, 250, 251); */
+	/* border: solid 2px rgb(21, 22, 22);
+	border-radius: 20px; */
+	/* box-shadow: 0 0 3em -0.5em  rgb(3, 121, 111); */
+}
+#cardhead{
+	border-radius: 1em;
+	width: fit-content;
+	align-self: center;
+	height: 2.5em;
+	padding: 0.25em 0.75em 0.25em 0.75em;
+}
+.formbox{
+	width: fit-content;
+	padding: 1em;
+	align-items: center;
+
+}
+.useful_links{
+	color: rgb(59, 59, 59);
+	text-decoration: none;
+}
+.useful_links:hover{
+	color: rgb(255, 255, 255);
+	text-decoration: none;
+}
+
+.footer-style h6{
+
+	font-weight: 700;
+	font-size: 1.2em;
+	color: rgb(20, 20, 20);
+}
+.footer-style a{
+	padding: 10px 0;
+	font-weight: 500;
+	color: rgb(26, 25, 25);
+}
+#scrollDown{
+	color: black;
+	position: fixed;
+	bottom: 115px;
+	right: 20px;
+	font-size: 30px;
+	width: 50px;
+	height: 50px;
+	border-radius: 50px;
+	background: #5eaaa8;
+	border:none;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 99;
+}
+#scrollDown:focus{
+	outline: 0;
+}
+#scrollUp{
+	color: black;
+	position: fixed;
+	bottom: 170px;
+	right: 20px;
+	font-size: 30px;
+	width: 50px;
+	height: 50px;
+	border-radius: 50px;
+	background: #5eaaa8;
+	border:none;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 99;
+}
+#scrollUp:focus{
+	outline: 0;
+}
+.parallax {
+  background-image: url('/static/centralapp/Images/bhu.jpeg');
+  height: 100%;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
