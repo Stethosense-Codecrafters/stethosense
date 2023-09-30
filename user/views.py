@@ -9,7 +9,9 @@ from .models import HealthProfile
 from autho.models import CustomUser
 from .models import HealthProfile  
 from .diet import Diet
-from django.contrib import messages
+# from django.contrib import messages
+import pandas
+
 
 @login_required
 def home_view(request):
@@ -62,8 +64,21 @@ def diet(request):
     
     if health_profile is not None:
         diet = Diet(health_profile.height, health_profile.weight, health_profile.gender, health_profile.age)
-        
-    return render(request, 'diet.html', {'diet_plan': diet.get_diet_plan(), 'health_profile': diet.get_health_profile()})   
+    
+    diet_plan =  diet.get_diet_plan()
+    
+    data = {
+        # 'diet_plan': diet_plan, 
+        'health_profile': diet.get_health_profile()
+    }
+    
+    for day, plan in diet_plan.items() :
+        diet_plan[day] = plan.to_dict()
+        diet_plan[day]['Food'] = list(plan['Food'])
+        diet_plan[day]['Quantity (g)'] = list(map(int, list(plan['Quantity (g)'])))
+        data[day.lower()] = zip(diet_plan[day]['Food'], diet_plan[day]['Quantity (g)'])
+
+    return render(request, 'diet.html', data)   
 
 
 
