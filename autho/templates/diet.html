@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<head>
+    <style>
+        td {
+            font-size: 18px !important;
+            font-weight: bold;
+        }
+        .mb-500 {
+            margin-bottom: 500px !important;
+        }
+    </style>
+</head>
+<div class="container mt-5 mb-500">
+    <h2 class="mt-4">Diet Plan</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Day</th>
+                <th>Food</th>
+                <th>Quantity (g)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for day, food_data in diet_plan.items %}
+                <tr>
+                    <td>{{ day }}</td>
+                    <td>
+                        {% for food, quantity in food_data.items %}
+                            {{ food }} ({{ quantity }}g)<br>
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for quantity in food_data.values %}
+                           ({{ quantity }}g)<br>
+                        {% endfor %}
+                    </td>
+                    
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2 class="mt-4">Health Profile</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Attribute</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for attribute, value in health_profile.items %}
+                <tr>
+                    <td>{{ attribute }}</td>
+                    <td>{{ value }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,412 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="github.com/aioont" />
+  <link rel="shortcut icon" href="{% static 'img/images/favicon.png' %}" type="">
+
+  <title> Stethosense </title>
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/css-new/bootstrap.css' %}" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <!--owl slider stylesheet -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+  <!-- font awesome style -->
+  <link href="{% static 'css/css-new/font-awesome.min.css' %}" rel="stylesheet" />
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/css-new/style.css' %}" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="{% static 'css/css-new/responsive.css' %}" rel="stylesheet" />
+  <!--Carousel links-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Add custom CSS for rounded text boxes and background -->
+
+  <style>
+     /* styles.css */
+.user-card {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.user-avatar img {
+    max-width: 100px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.user-details {
+    flex: 1;
+}
+
+.user-details h2 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.user-details p {
+    margin: 5px 0;
+}
+
+  </style>
+</head>
+
+<body>
+
+  <div class="hero_area">
+
+    <div class="hero_bg_box">
+      <img src="{% static 'img/images/hero-bg.png' %}" alt="">
+    </div>
+
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="index.html">
+            <span>
+              Stethosense
+            </span>
+          </a>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class=""> </span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+              <form class="form-inline">
+                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+              </form>
+              <li class="nav-item active">
+                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html"> About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="departments.html">Services</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact Us</a>
+              </li>
+
+
+
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Login</a>
+              </li>
+
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+
+  <div class="content">
+    {% block content %}{% endblock %}
+</div>
+
+
+  <!-- contact section -->
+  <section class="contact_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          Get In Touch
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form_container contact-form">
+            <form action="">
+              <div class="form-row">
+                <div class="col-lg-6">
+                  <div>
+                    <input type="text" placeholder="Your Name" />
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div>
+                    <input type="text" placeholder="Phone Number" />
+                  </div>
+                </div>
+              </div>
+              <div>
+                <input type="email" placeholder="Email" />
+              </div>
+              <div>
+                <input type="text" class="message-box" placeholder="Message" />
+              </div>
+              <div class="btn_box">
+                <button>
+                  SEND
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+       
+        <div class="col-md-6">
+          <div class="logo_container">
+            <img src="{% static 'img/images/logo.png' %}" alt="Your Logo">
+            <a href="#">
+              <i class="fa fa-phone" aria-hidden="true"></i>
+              <span>Call +91 1234567890</span>
+            </a>
+            <a href="#">
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+              <span>stethosense@gmail.com</span>
+            </a>
+          </div>
+          
+        </div>
+        
+        
+      </div>
+    </div>
+  </section>
+  <!-- end contact section -->
+
+  <!-- client section -->
+
+  <section class="client_section layout_padding-bottom">
+    <div class="container">
+      <div class="heading_container heading_center ">
+        <h2>
+          What Stethosense user says
+
+        </h2>
+      </div>
+      <div id="carouselExample2Controls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="row">
+              <div class="col-md-11 col-lg-10 mx-auto">
+                <div class="box">
+                  <div class="img-box">
+                    <img src="{% static 'img/images/t1.jpg' %}" alt="" />
+                  </div>
+                  <div class="detail-box">
+                    <div class="name">
+                      <h6>
+                        Michael P.
+                      </h6>
+                    </div>
+                    <p>
+                      "Stethosense has been a game-changer for me. Managing my medications has never been easier. The personalized recommendations also helped me improve my diet and exercise routine. It's like having a personal health assistant in my pocket!"
+                      
+                    </p>
+                    <i class="fa fa-quote-left" aria-hidden="true"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row">
+              <div class="col-md-11 col-lg-10 mx-auto">
+                <div class="box">
+                  <div class="img-box">
+                    <img src="{% static 'img/images/t3.jpg' %}" alt="" />
+                  </div>
+                  <div class="detail-box">
+                    <div class="name">
+                      <h6>
+                        Mia Mike
+                      </h6>
+                    </div>
+                    <p>
+                      "As a busy professional, Stethosense has simplified my health management. The centralized records and lab reports save me time, and the shopping feature is incredibly convenient. I can't imagine my health journey without it!"
+
+                    </p>
+                    <i class="fa fa-quote-left" aria-hidden="true"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row">
+              <div class="col-md-11 col-lg-10 mx-auto">
+                <div class="box">
+                  <div class="img-box">
+                    <img src="{% static 'img/images/t4.jpg' %}" alt="" />
+                  </div>
+                  <div class="detail-box">
+                    <div class="name">
+                      <h6>
+                        Alan Emerson
+                      </h6>
+                    </div>
+                    <p>
+                      "Stethosense not only tracks my health but also empowers me with knowledge. The environmental awareness feature opened my eyes to the impact of my surroundings. I'm making healthier choices, thanks to Stethosense!"
+
+                    </p>
+                    <i class="fa fa-quote-left" aria-hidden="true"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel_btn-container">
+          <a class="carousel-control-prev" href="#carouselExample2Controls" role="button" data-slide="prev">
+            <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExample2Controls" role="button" data-slide="next">
+            <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end client section -->
+
+  <!-- footer section -->
+  <footer class="footer_section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-lg-3 footer_col">
+          <div class="footer_contact">
+            <h4>
+              Reach at..
+            </h4>
+            
+            <div class="contact_link_box">
+              <a href="https://www.google.com/maps/d/u/0/viewer?mid=16Z3sVr49KyKpik2Jpat4V8wUW64&hl=en_US&ll=9.778498726478349">
+                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                <span>Location</span>
+              </a>
+              <a href="#">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+                <span>Call +91 1234567890</span>
+              </a>
+              <a href="#">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+                <span>stethosense@gmail.com</span>
+              </a>
+            </div>
+          </div>  
+          <div class="footer_social">
+            <a href="https://www.facebook.com/stethosense">
+              <i class="fa fa-facebook" aria-hidden="true"></i>
+            </a>
+            <a href="https://twitter.com/stethosense">
+              <i class="fa fa-twitter" aria-hidden="true"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/stethosense">
+              <i class="fa fa-linkedin" aria-hidden="true"></i>
+            </a>
+            <a href="https://www.instagram.com/stethosense">
+              <i class="fa fa-instagram" aria-hidden="true"></i>
+            </a>
+          </div>
+          </div>
+         
+          
+        <div class="col-md-6 col-lg-3 footer_col">
+          <div class="footer_detail">
+            <h4>
+              About
+            </h4>
+            <p>
+                Experience healthcare management like never before with Stethosense. Join us on the journey to a healthier, happier you.
+            </p>
+
+              
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-2 mx-auto footer_col">
+          <div class="footer_link_box">
+            <h4>
+              Links
+            </h4>
+            <div class="footer_links">
+              <a class="active" href="index.html">
+                Home
+              </a>
+              <a class="" href="about.html">
+                About
+              </a>
+              <a class="" href="departments.html">
+                Departments
+              </a>
+              <a class="" href="doctors.html">
+                Doctors
+              </a>
+              <a class="" href="contact.html">
+                Contact Us
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 footer_col ">
+          <h4>
+            Newsletter
+          </h4>
+          <form action="#">
+            <input type="email" placeholder="Enter email" />
+            <button type="submit">
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-info">
+        <p>
+          &copy; <span id="displayYear"></span> All Rights Reserved By
+          <a href="https://html.design/">Stethosense</a> (Template by <a href="https://themewagon.com/">ThemeWagon</a>)
+        </p>
+      </div>
+      
+    </div>
+  </footer>
+  <!-- footer section -->
+
+  <!-- jQery -->
+  <script type="text/javascript" src="{% static 'js/js-new/jquery-3.4.1.min.js' %}"></script>
+  <!-- popper js -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+  <!-- bootstrap js -->
+  <script type="text/javascript" src="{% static 'js/js-new/bootstrap.js' %}"></script>
+  <!-- owl slider -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+  </script>
+  <!-- custom js -->
+  <script type="text/javascript" src="{% static 'js/js-new/custom.js' %}"></script>
+ 
+
+</body>
+</html>

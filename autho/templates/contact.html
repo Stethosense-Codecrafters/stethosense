@@ -1,0 +1,66 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <!-- contact section -->
+  <section class="contact_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          Get In Touch
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form_container contact-form">
+            <form action="">
+              <div class="form-row">
+                <div class="col-lg-6">
+                  <div>
+                    <input type="text" placeholder="Your Name" />
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div>
+                    <input type="text" placeholder="Phone Number" />
+                  </div>
+                </div>
+              </div>
+              <div>
+                <input type="email" placeholder="Email" />
+              </div>
+              <div>
+                <input type="text" class="message-box" placeholder="Message" />
+              </div>
+              <div class="btn_box">
+                <button>
+                  SEND
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        
+        <div class="col-md-6">
+          <div class="map_container">
+            <iframe
+              width="100%"
+              height="400"
+              frameborder="0"
+              scrolling="no"
+              marginheight="0"
+              marginwidth="0"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.634520251164!2d76.26572711480839!3d10.85051669315373!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b08368d8e53d079%3A0x27131d147a3377a2!2sKerala!5e0!3m2!1sen!2sin!4v1632992346932!5m2!1sen!2sin">
+            </iframe>
+          </div>
+        </div>
+        
+
+
+      </div>
+    </div>
+  </section>
+  <!-- end contact section -->
+
+  {% endblock %}

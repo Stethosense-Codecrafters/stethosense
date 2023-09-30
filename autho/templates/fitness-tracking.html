@@ -1,0 +1,53 @@
+<!-- fitness-fill-user-profile.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="mb-0">Add Physical Activity</h2>
+                    <p>Enter your physical activity details</p>
+                </div>
+                <div class="card-body">
+                    {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                                <li>{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="{{ form.activity_date.id_for_label }}">Activity Date (YYYY-MM-DD):</label>
+                            {{ form.activity_date }}
+                            {{ form.activity_date.errors }} 
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ form.activity_name.id_for_label }}">Activity Name :</label>
+                            {{ form.activity_name }}
+                            {{ form.activity_name.errors }} 
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ form.duration_minutes.id_for_label }}"> Duration of activity in minutes :</label>
+                            {{ form.duration_minutes }}
+                            {{ form.duration_minutes.errors }}  
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ form.calories_burned.id_for_label }}"> Calories burned :</label>
+                            {{ form.calories_burned }}
+                            {{ form.calories_burned.errors }}  
+                        </div>
+                    
+
+                        
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
