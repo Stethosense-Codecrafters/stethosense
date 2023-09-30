@@ -40,7 +40,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <!-- Add custom CSS for rounded text boxes and background -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 
 
 
@@ -91,12 +91,12 @@
 
 
               <li class="nav-item">
-              {% if user.is_authenticated %}
-                  <a href="{% url 'user-home' %}" class="nav-link">Dashboard</a>
-              {% else %}
-                  <a href="{% url 'login' %}" class="nav-link">Login</a>
-              {% endif %}
-             </li>
+                {% if user.is_authenticated %}
+                <a href="{% url 'user-home' %}" class="nav-link">Dashboard</a>
+                {% else %}
+                <a href="{% url 'login' %}" class="nav-link">Login</a>
+                {% endif %}
+              </li>
 
 
             </ul>
@@ -104,7 +104,7 @@
         </nav>
       </div>
     </header>
-     <!-- end header section -->
+    <!-- end header section -->
     <!-- slider section -->
     <section class="slider_section ">
       <div id="customCarousel1" class="carousel slide" data-ride="carousel">
@@ -205,54 +205,124 @@
   </div>
 
 
- <!-- department section -->
-<section class="department_section layout_padding">
-  <div class="department_container">
-    <div class="container ">
-      <div class="heading_container heading_center">
-        <h2>
-          Our services
-        </h2>
-        <p>
-          Stethosense is designed with you in mind. It centralizes all these features to create a convenient,
-          streamlined experience that adapts to your unique health needs. Instantly access information about your
-          progress, allowing you to adjust your approach as needed. Identify patterns in your health journey, enabling
-          you to optimize your strategies over time. Seeing your progress in real time can serve as a powerful
-          motivator to stay committed to your health goals.
-        </p>
-      </div>
-      <div class="row">
-        <div class="col-md-3">
-          <div class="box ">
-            <div class="img-box">
-              <i class="fas fa-pills fa-4x"></i>
+  <!-- department section -->
+  <section class="department_section layout_padding">
+    <div class="department_container">
+      <div class="container ">
+        <div class="heading_container heading_center">
+          <h2>
+            Our services
+          </h2>
+          <p>
+            Stethosense is designed with you in mind. It centralizes all these features to create a convenient,
+            streamlined experience that adapts to your unique health needs. Instantly access information about your
+            progress, allowing you to adjust your approach as needed. Identify patterns in your health journey, enabling
+            you to optimize your strategies over time. Seeing your progress in real time can serve as a powerful
+            motivator to stay committed to your health goals.
+          </p>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="box ">
+              <div class="img-box">
+                <i class="fas fa-pills fa-4x"></i>
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Medication Tracking
+                </h5>
+                <p>
+                  Say goodbye to medication mix-ups. Stethosense allows you to effortlessly keep track of your
+                  medications, ensuring you never miss a dose.
+                </p>
+              </div>
             </div>
-            <div class="detail-box">
-              <h5>
-                Medication Tracking
-              </h5>
-              <p>
-                Say goodbye to medication mix-ups. Stethosense allows you to effortlessly keep track of your
-                medications, ensuring you never miss a dose.
-              </p>
+          </div>
+          <div class="col-md-4">
+            <div class="box ">
+              <div class="img-box">
+                <i class="fas fa-utensils fa-4x"></i>
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Diet Monitoring
+                </h5>
+                <p>
+                  Make informed decisions for a healthier lifestyle. With Stethosense, you can monitor your dietary
+                  choices and take control of your nutrition.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="box ">
+              <div class="img-box">
+                <i class="fas fa-dumbbell fa-4x"></i>
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Exercise Planning
+                </h5>
+                <p>
+                  Achieve your fitness goals with ease. Stethosense helps you plan and track your exercise routine,
+                  making your fitness journey more achievable.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="box ">
+              <div class="img-box">
+                <i class="fas fa-tree fa-4x"></i>
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Environmental Awareness
+                </h5>
+                <p>
+                  Your surroundings matter. Stay informed about how environmental factors impact your well-being,
+                  empowering you to make healthier choices.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="box ">
+              <div class="img-box">
+                <i class="fas fa-file-medical fa-4x"></i>
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Comprehensive Health Records
+                </h5>
+                <p>
+                  We offer full-fledged health management by providing you with a secure repository for your medical
+                  history. Centralize all your health records, lab reports, and digital prescriptions in one place.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="box ">
+              <div class="img-box">
+                <i class="fas fa-user-md fa-4x"></i>
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Personalized Wellness Recommendations
+                </h5>
+                <p>
+                  Stethosense revolutionizes well-being with personalized health advice, one-stop shopping, and
+                  lifestyle optimization.
+                </p>
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="box ">
-            <div class="img-box">
-              <i class="fas fa-utensils fa-4x"></i>
-            </div>
-            <div class="detail-box">
-              <h5>
-                Diet Monitoring
-              </h5>
-              <p>
-                Make informed decisions for a healthier lifestyle. With Stethosense, you can monitor your dietary
-                choices and take control of your nutrition.
-              </p>
-            </div>
-          </div>
+        <div class="btn-box">
+          <a href="">
+            Join now
+          </a>
         </div>
         <div class="col-md-4">
           <div class="box ">
@@ -325,9 +395,8 @@
         </a>
       </div>
     </div>
-  </div>
-</section>
-<!-- end department section -->
+  </section>
+  <!-- end department section -->
 
 
   <!-- about section -->
@@ -336,18 +405,18 @@
     <div class="container  ">
 
 
-        <div class="detail-box">
-          <div class="heading_container heading_center">
-            <h2>
-              How Stethosense Works
-            </h2>
-          </div>
+      <div class="detail-box">
+        <div class="heading_container heading_center">
+          <h2>
+            How Stethosense Works
+          </h2>
+        </div>
 
-          <div class="container mt-5">
-            <div id="content-carousel" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
+        <div class="container mt-5">
+          <div id="content-carousel" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
 
-                    <!-- <a class="carousel-control-prev" href="#content-carousel" role="button" data-slide="prev">
+              <!-- <a class="carousel-control-prev" href="#content-carousel" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
                     </a>
@@ -356,63 +425,72 @@
                         <span class="sr-only">Next</span>
                     </a> -->
 
-                    <li data-target="#content-carousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#content-carousel" data-slide-to="1"></li>
-                    <li data-target="#content-carousel" data-slide-to="2"></li>
-                    <li data-target="#content-carousel" data-slide-to="3"></li>
-                    <li data-target="#content-carousel" data-slide-to="4"></li>
-                </ol>
+              <li data-target="#content-carousel" data-slide-to="0" class="active"></li>
+              <li data-target="#content-carousel" data-slide-to="1"></li>
+              <li data-target="#content-carousel" data-slide-to="2"></li>
+              <li data-target="#content-carousel" data-slide-to="3"></li>
+              <li data-target="#content-carousel" data-slide-to="4"></li>
+            </ol>
 
-                <div class="carousel-inner">
-                    <!-- First Slide -->
-                    <div class="carousel-item active">
-                        <div class="section">
-                            <h2>1. User Registration</h2>
-                            <p>Users begin by registering on Stethosense, providing basic personal details and essential medical information. The platform generates a unique user ID for identification.</p>
-                        </div>
-                    </div>
-
-                    <!-- Second Slide -->
-                    <div class="carousel-item">
-                        <div class="section">
-                            <h2>2. Doctor-Patient Interaction</h2>
-                            <p>When a user visits a healthcare professional, they can grant the doctor access to their medical data by sharing their unique user ID. The doctor enters this ID to access the user's information.</p>
-                        </div>
-                    </div>
-                    <!-- Third Slide -->
-                    <div class="carousel-item">
-                        <div class="section">
-                            <h2>3. Access to Medical Data</h2>
-                            <p>Doctors gain access to the user's medical history and lab reports, facilitating a comprehensive understanding of the user's health.</p>
-                        </div>
-                    </div>
-                    <!-- Fourth Slide -->
-                    <div class="carousel-item">
-                        <div class="section">
-                            <h2>4. Specialized User Dashboard</h2>
-                            <p>Users are provided with a personalized dashboard encompassing key features:</p>
-                            <ul>
-                                <li>Medication Tracking: Users can effortlessly manage their medications, ensuring they never miss a dose.</li>
-                                <li>Diet Monitoring: The platform enables users to monitor their dietary choices, helping them make informed decisions for a healthier lifestyle.</li>
-                                <li>Exercise Planning: Users can plan and track their exercise routines, setting achievable fitness goals.</li>
-                                <li>Environmental Awareness: Stethosense keeps users informed about environmental factors impacting their well-being.</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- Fifth Slide -->
-                    <div class="carousel-item">
-                        <div class="section">
-                            <h2>5. Medical Reports and Medication Details</h2>
-                            <p>With user consent, laboratories and medical professionals can upload reports and display medicine details, streamlining healthcare processes and enhancing the user experience.</p>
-                        </div>
-                    </div>
+            <div class="carousel-inner text-white">
+              <!-- First Slide -->
+              <div class="carousel-item active">
+                <div class="section">
+                  <h2>1. User Registration</h2>
+                  <p>Users begin by registering on Stethosense, providing basic personal details and essential medical
+                    information. The platform generates a unique user ID for identification.</p>
                 </div>
+              </div>
 
+              <!-- Second Slide -->
+              <div class="carousel-item">
+                <div class="section">
+                  <h2>2. Doctor-Patient Interaction</h2>
+                  <p>When a user visits a healthcare professional, they can grant the doctor access to their medical
+                    data by sharing their unique user ID. The doctor enters this ID to access the user's information.
+                  </p>
+                </div>
+              </div>
+              <!-- Third Slide -->
+              <div class="carousel-item">
+                <div class="section">
+                  <h2>3. Access to Medical Data</h2>
+                  <p>Doctors, with your permission, is allowed to gain access to the user's medical history and lab reports, facilitating a comprehensive
+                    understanding of the user's health.</p>
+                </div>
+              </div>
+              <!-- Fourth Slide -->
+              <div class="carousel-item">
+                <div class="section">
+                  <h2>4. Specialized User Dashboard</h2>
+                  <p>Users are provided with a personalized dashboard encompassing key features:</p>
+                  <ul>
+                    <li>Medication Tracking: Users can effortlessly manage their medications, ensuring they never miss a
+                      dose.</li>
+                    <li>Diet Monitoring: The platform enables users to monitor their dietary choices, helping them make
+                      informed decisions for a healthier lifestyle.</li>
+                    <li>Exercise Planning: Users can plan and track their exercise routines, setting achievable fitness
+                      goals.</li>
+                    <li>Environmental Awareness: Stethosense keeps users informed about environmental factors impacting
+                      their well-being.</li>
+                  </ul>
+                </div>
+              </div>
+              <!-- Fifth Slide -->
+              <div class="carousel-item">
+                <div class="section">
+                  <h2>5. Medical Reports and Medication Details</h2>
+                  <p>With user consent, laboratories and medical professionals can upload reports and display medicine
+                    details, streamlining healthcare processes and enhancing the user experience.</p>
+                </div>
+              </div>
             </div>
+
+          </div>
         </div>
 
 
-        </div>
+      </div>
 
 
     </div>
@@ -428,7 +506,8 @@
           Latest blogs
         </h2>
         <p class="col-md-10 mx-auto px-0">
-          Experience healthcare management like never before with Stethosense. Join us on the journey to a healthier, happier you.
+          Experience healthcare management like never before with Stethosense. Join us on the journey to a healthier,
+          happier you.
         </p>
       </div>
       <div class="row">
@@ -456,7 +535,8 @@
                 "Understanding the Basics of Vaccination"
               </h5>
               <p class="">
-                Dive into the world of vaccines and learn about their importance, how they work, and their role in preventing infectious diseases. Explore the science behind vaccination and its impact on public health.
+                Dive into the world of vaccines and learn about their importance, how they work, and their role in
+                preventing infectious diseases. Explore the science behind vaccination and its impact on public health.
               </p>
               <a href="#">Read more</a>
             </div>
@@ -486,7 +566,9 @@
                 "Managing Stress for a Healthy Heart"
               </h5>
               <p class="">
-                Discover the connection between stress and heart health. Explore practical strategies for reducing stress and anxiety to maintain a healthy cardiovascular system. Learn relaxation techniques and lifestyle changes for a happier heart.
+                Discover the connection between stress and heart health. Explore practical strategies for reducing
+                stress and anxiety to maintain a healthy cardiovascular system. Learn relaxation techniques and
+                lifestyle changes for a happier heart.
               </p>
               <a href="#">Read more</a>
             </div>
@@ -516,7 +598,9 @@
                 "The Benefits of Regular Exercise for Mental Health"
               </h5>
               <p class="">
-                Stethosense not only tracks my health but also empowers me with knowledge. The environmental awareness feature opened my eyes to the impact of my surroundings. I'm making healthier choices, thanks to Stethosense!"
+                Stethosense not only tracks my health but also empowers me with knowledge. The environmental awareness
+                feature opened my eyes to the impact of my surroundings. I'm making healthier choices, thanks to
+                Stethosense!"
               </p>
               <a href="#">Read more</a>
             </div>
@@ -576,7 +660,7 @@
             </form>
           </div>
         </div>
-       
+
         <div class="col-md-6">
           <div class="logo_container">
             <img src="{% static 'img/images/logo.png' %}" alt="Your Logo">
@@ -589,10 +673,10 @@
               <span>stethosense@gmail.com</span>
             </a>
           </div>
-          
+
         </div>
-        
-        
+
+
       </div>
     </div>
   </section>
@@ -624,8 +708,10 @@
                       </h6>
                     </div>
                     <p>
-                      "Stethosense has been a game-changer for me. Managing my medications has never been easier. The personalized recommendations also helped me improve my diet and exercise routine. It's like having a personal health assistant in my pocket!"
-                      
+                      "Stethosense has been a game-changer for me. Managing my medications has never been easier. The
+                      personalized recommendations also helped me improve my diet and exercise routine. It's like having
+                      a personal health assistant in my pocket!"
+
                     </p>
                     <i class="fa fa-quote-left" aria-hidden="true"></i>
                   </div>
@@ -647,7 +733,9 @@
                       </h6>
                     </div>
                     <p>
-                      "As a busy professional, Stethosense has simplified my health management. The centralized records and lab reports save me time, and the shopping feature is incredibly convenient. I can't imagine my health journey without it!"
+                      "As a busy professional, Stethosense has simplified my health management. The centralized records
+                      and lab reports save me time, and the shopping feature is incredibly convenient. I can't imagine
+                      my health journey without it!"
 
                     </p>
                     <i class="fa fa-quote-left" aria-hidden="true"></i>
@@ -670,7 +758,9 @@
                       </h6>
                     </div>
                     <p>
-                      "Stethosense not only tracks my health but also empowers me with knowledge. The environmental awareness feature opened my eyes to the impact of my surroundings. I'm making healthier choices, thanks to Stethosense!"
+                      "Stethosense not only tracks my health but also empowers me with knowledge. The environmental
+                      awareness feature opened my eyes to the impact of my surroundings. I'm making healthier choices,
+                      thanks to Stethosense!"
 
                     </p>
                     <i class="fa fa-quote-left" aria-hidden="true"></i>
@@ -705,9 +795,10 @@
             <h4>
               Reach at..
             </h4>
-            
+
             <div class="contact_link_box">
-              <a href="https://www.google.com/maps/d/u/0/viewer?mid=16Z3sVr49KyKpik2Jpat4V8wUW64&hl=en_US&ll=9.778498726478349">
+              <a
+                href="https://www.google.com/maps/d/u/0/viewer?mid=16Z3sVr49KyKpik2Jpat4V8wUW64&hl=en_US&ll=9.778498726478349">
                 <i class="fa fa-map-marker" aria-hidden="true"></i>
                 <span>Location</span> Kerala, India
               </a>
@@ -720,7 +811,7 @@
                 <span>stethosense@gmail.com</span>
               </a>
             </div>
-          </div>  
+          </div>
           <div class="footer_social">
             <a href="https://www.facebook.com/stethosense">
               <i class="fa fa-facebook" aria-hidden="true"></i>
@@ -735,19 +826,20 @@
               <i class="fa fa-instagram" aria-hidden="true"></i>
             </a>
           </div>
-          </div>
-         
-          
+        </div>
+
+
         <div class="col-md-6 col-lg-3 footer_col">
           <div class="footer_detail">
             <h4>
               About
             </h4>
             <p>
-                Experience healthcare management like never before with Stethosense. Join us on the journey to a healthier, happier you.
+              Experience healthcare management like never before with Stethosense. Join us on the journey to a
+              healthier, happier you.
             </p>
 
-              
+
           </div>
         </div>
         <div class="col-md-6 col-lg-2 mx-auto footer_col">
@@ -793,7 +885,7 @@
           <a href="https://html.design/">Stethosense</a> (Template by <a href="https://themewagon.com/">ThemeWagon</a>)
         </p>
       </div>
-      
+
     </div>
   </footer>
   <!-- footer section -->
@@ -811,7 +903,8 @@
   </script>
   <!-- custom js -->
   <script type="text/javascript" src="{% static 'js/js-new/custom.js' %}"></script>
- 
+
 
 </body>
+
 </html>
