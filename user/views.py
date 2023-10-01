@@ -29,7 +29,6 @@ def home_view(request):
 
 
 
-
 @login_required
 def health_profile(request):
     user = request.user
@@ -47,10 +46,15 @@ def health_profile(request):
 
             # Redirect to the 'home' URL after successfully saving the form
             return redirect('home')
+        else:
+            # Form is not valid, collect errors and display them
+            messages.error(request, 'Please correct the errors below.')
+
     else:
         form = HealthProfileForm(instance=health_profile)
 
     return render(request, 'health_profile.html', {'form': form})
+
 
 @login_required
 def diet(request):

@@ -19,7 +19,7 @@ class HealthProfile(models.Model):
         ('F', 'Female'),
         ('O', 'Other'),
     )
-    gender = models.CharField(max_length=1, choices=GENDER_CHOICES, blank=True, null=True)
+    gender = models.CharField(max_length=10, choices=GENDER_CHOICES, blank=True, null=True)
     blood_group = models.CharField(max_length=3, blank=True, null=True)
     emergency_contact = models.CharField(max_length=15, blank=True, null=True, help_text="Emergency contact number")
     profile_picture = models.ImageField(upload_to='profile_picture/', blank=True, null=True)
