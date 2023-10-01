@@ -10,8 +10,6 @@ from autho.models import CustomUser
 from .models import HealthProfile  
 from .diet import Diet
 from django.contrib import messages
-import pandas
-
 
 @login_required
 def home_view(request):
