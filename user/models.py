@@ -27,7 +27,7 @@ class HealthProfile(models.Model):
     bmi = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True, help_text="Body Mass Index")
     blood_pressure = models.CharField(max_length=15, blank=True, null=True, help_text="Blood Pressure")
     blood_glucose = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True, help_text="Blood Glucose Level")
-    cholesterol = models.JSONField(blank=True, null=True, help_text="Cholesterol Levels (JSON)")
+    cholesterol = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True, help_text="Cholesterol Levels (JSON)")
 
     def __str__(self):
         return f"{self.user.medical_id} - {self.user.email}"
