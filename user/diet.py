@@ -94,10 +94,10 @@ class Diet:
 
     def get_health_profile(self):
         return {
-            'age': self.age,
-            'weight': self.weight,
-            'height': self.height,
-            'gender': self.gender,
-            'calorie_requirement': round(100 * self.calories) / 100
+            'Age': self.age,
+            'Weight': self.weight,
+            'Height': self.height,
+            'Gender': self.gender,
+            'Calorie Requirement': round(100 * self.calories) / 100
         }
     

@@ -1,63 +1,245 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<head>
-    <style>
-        td {
-            font-size: 18px !important;
-            font-weight: bold;
-        }
-        .mb-500 {
-            margin-bottom: 500px !important;
-        }
-    </style>
-</head>
-<div class="container mt-5 mb-500">
+
+<style>
+    td {
+        font-size: 18px !important;
+        font-weight: bold;
+    }
+
+    .mb-500 {
+        margin-bottom: 500px !important;
+    }
+    .diet a {
+        font-size: 20px;
+        color: white !important;
+        padding-left: 14px;
+        transition: ease .7s;
+        text-decoration: none;
+    }
+    .diet a:hover {
+        color: rgb(148, 255, 244) !important;
+        text-decoration: none;
+        transform: translateX(14px);
+    }
+    table tbody td {
+        font-weight: normal !important;
+        font-size: 12px;
+    }
+    table thead th {
+        font-size: 18px;
+    }
+</style>
+<div class="diet container mt-5 mb-500 text-white">
     <h2 class="mt-4">Diet Plan</h2>
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Day</th>
-                <th>Food</th>
-                <th>Quantity (g)</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for day, food_data in diet_plan.items %}
-                <tr>
-                    <td>{{ day }}</td>
-                    <td>
-                        {% for food, quantity in food_data.items %}
-                            {{ food }} ({{ quantity }}g)<br>
+
+    <a data-toggle="collapse" href="#collapseExample1"
+        role="button" aria-expanded="false" aria-controls="collapseExample1">
+        > Monday </a>
+
+    <div class="collapse" id="collapseExample1">
+        <div class="card card-body text-dark m-3">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Food</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for food, quantity in monday %}
+                    <tr>
+                        <td>{{food}}</td>
+                        <td>{{quantity}} g</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <br>
+    <a data-toggle="collapse" href="#collapseExample2"
+        role="button" aria-expanded="false" aria-controls="collapseExample2">
+        > Tuesday </a>
+
+        <div class="collapse" id="collapseExample2">
+            <div class="card card-body text-dark m-3">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Food</th>
+                            <th>Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for food, quantity in tuesday %}
+                        <tr>
+                            <td>{{food}}</td>
+                            <td>{{quantity}} g</td>
+                        </tr>
                         {% endfor %}
-                    </td>
-                    <td>
-                        {% for quantity in food_data.values %}
-                           ({{ quantity }}g)<br>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    <br>
+    <a data-toggle="collapse" href="#collapseExample3"
+        role="button" aria-expanded="false" aria-controls="collapseExample3">
+        > Wednesday </a>
+
+        <div class="collapse" id="collapseExample3">
+            <div class="card card-body text-dark m-3">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Food</th>
+                            <th>Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for food, quantity in wednesday %}
+                        <tr>
+                            <td>{{food}}</td>
+                            <td>{{quantity}} g</td>
+                        </tr>
                         {% endfor %}
-                    </td>
-                    
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    <br>
+    <a data-toggle="collapse" href="#collapseExample4"
+        role="button" aria-expanded="false" aria-controls="collapseExample4">
+        > Thursday </a>
+        <div class="collapse" id="collapseExample4">
+            <div class="card card-body text-dark m-3">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Food</th>
+                            <th>Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for food, quantity in thursday %}
+                        <tr>
+                            <td>{{food}}</td>
+                            <td>{{quantity}} g</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    <br>
+    <a data-toggle="collapse" href="#collapseExample5"
+        role="button" aria-expanded="false" aria-controls="collapseExample5">
+        > Friday </a>
+        <div class="collapse" id="collapseExample5">
+            <div class="card card-body text-dark m-3">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Food</th>
+                            <th>Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for food, quantity in friday %}
+                        <tr>
+                            <td>{{food}}</td>
+                            <td>{{quantity}} g</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    <br>
+    <a data-toggle="collapse" href="#collapseExample6"
+        role="button" aria-expanded="false" aria-controls="collapseExample6">
+        > Saturday </a>
+        <div class="collapse" id="collapseExample6">
+            <div class="card card-body text-dark m-3">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Food</th>
+                            <th>Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for food, quantity in saturday %}
+                        <tr>
+                            <td>{{food}}</td>
+                            <td>{{quantity}} g</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    <br>
+    <a data-toggle="collapse" href="#collapseExample7"
+        role="button" aria-expanded="false" aria-controls="collapseExample7">
+        > Sunday </a>
+
+        <div class="collapse" id="collapseExample7">
+            <div class="card card-body text-dark m-3">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Food</th>
+                            <th>Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for food, quantity in sunday %}
+                        <tr>
+                            <td>{{food}}</td>
+                            <td>{{quantity}} g</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br>
+
+
+
 
     <h2 class="mt-4">Health Profile</h2>
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Attribute</th>
-                <th>Value</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for attribute, value in health_profile.items %}
+    <div class="card card-body text-dark my-3">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Attribute</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for attribute, value in health_profile.items %}
                 <tr>
                     <td>{{ attribute }}</td>
                     <td>{{ value }}</td>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+    
 </div>
+<!-- <script>
+    $(document).on('click','.navbar-collapse.in',function(e) {
+        if( $(e.target).is('a') && $(e.target).attr('class') != 'dropdown-toggle' ) {
+            $(this).collapse('hide');
+        }
+    });
+</script> -->
 {% endblock %}
