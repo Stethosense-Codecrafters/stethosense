@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load static%}
+
+
+{% block content %}
+  <!-- about section -->
+
+  <section class="about_section layout_padding">
+    <div class="container  ">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="detail-box">
+            <div class="heading_container">
+              <h2>
+                About <span>Stethosense</span>
+              </h2>
+            </div>
+            <p>
+              Welcome to Stethosense, where your health, privacy, and well-being take center stage. We're on a mission
+              to revolutionize healthcare management, making it easier, more efficient, and more personalized for
+              everyone.
+            </p>
+            <a href="">
+              Our services
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6 mt-2">
+
+          <div class="img-box">
+            <img src="{% static 'img/images/about-img.jpg' %}" alt="">
+          </div>
+        </div>
+
+      </div>
+
+
+      <h2 class="mt-3">
+        Our Vision
+      </h2>
+      <p>
+        At Stethosense, we envision a world where individuals have effortless access to comprehensive health and
+        wellness solutions. We believe that healthcare should be user-centric, empowering individuals to take control of
+        their well-being.
+      </p>
+      <h2>What Sets Us Apart</h2>
+      <div class="container">
+
+        <div class="row">
+          <div class="col-md-6 mt-3">
+            <div class="img-box">
+              <img src="{% static 'img/images/tech-1.jpg' %}" alt="">
+            </div>
+          </div>
+
+          <div class="col-md-6 mt-3">
+            <p>
+              <b class="light-green-color">Comprehensive Healthcare Management:</b> Stethosense is not just another
+              health app; it's an all-in-one solution. We seamlessly integrate medication tracking, diet monitoring,
+              exercise planning, and environmental awareness into a single, user-friendly platform. Say goodbye to
+              fragmented solutions, and manage your health holistically.
+            </p>
+            <p>
+              <b class="light-green-color">Privacy as a Priority:</b> Your privacy is sacred to us. We've implemented
+              robust data security measures to safeguard your sensitive health information. With Stethosense, you're in
+              control of your data, and we ensure it stays that way.
+            </p>
+          </div>
+        </div>
+
+
+
+
+        <div class="row">
+          <div class="col-md-6 mt-3">
+            <p>
+              <b class="light-green-color">Efficiency Redefined:</b> Managing medications, tracking diets, and planning
+              workouts is now simpler than ever. Stethosense streamlines healthcare management, allowing you to focus on
+              what truly matters—your well-being.
+            </p>
+            <p>
+              <b class="light-green-color">Personal Fitness Companion:</b> Whether you're a fitness enthusiast or just
+              starting your journey, Stethosense offers personalized exercise plans and goal tracking. We're here to
+              motivate and support you every step of the way.
+            </p>
+            <p>
+              <b class="light-green-color">Environmental Awareness:</b> Your surroundings impact your health.
+              Stethosense keeps you informed about environmental factors and how they affect your well-being. Real-time
+              data insights keep you one step ahead.
+            </p>
+          </div>
+          <div class="col-md-6 mt-3">
+            <div class="img-box">
+              <img src="{% static 'img/images/tech-2.jpg' %}" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container mt-2">
+        <h2>Join Our Community</h2>
+        <p class="community-text">
+          We invite you to be part of the Stethosense community—a community that values your health, your privacy, and
+          your journey to a better you. With Stethosense, it's not just about managing health; it's about living a life
+          you love.
+        </p>
+        <p class="community-text">
+          <strong>Get Started Today</strong><br>
+          Ready to experience the future of healthcare management? Join Stethosense and embark on a journey to a
+          healthier, happier you. Your well-being, your privacy, and your fitness goals are at the heart of everything
+          we do.
+        </p>
+        <p class="community-text">
+          <em>Stethosense: Where Health Meets Privacy, and Fitness Meets Convenience.</em>
+        </p>
+        <a href="/signup" class="green-button">Get Started</a>
+      </div>
+
+
+
+  </section>
+
+  <!-- end about section -->
+
+  {% endblock %}

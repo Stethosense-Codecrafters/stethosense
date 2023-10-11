@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-image: url("../static/img/images/login-bg-image.png") !important;
+        margin: 0;
+        padding: 0;
+        }
+    p {
+        font-size: 25px;
+    }
+    li {
+        font-size: 18px;
+    }
+    .card-white {
+        background-color: #ffffff; 
+        border-radius: 10px; 
+        border: 1px solid #e1e1e1; 
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+        padding: 20px; 
+        margin: 10px;
+        border: 3px solid rgb(114, 114, 114);
+
+    }
+    .custom-table {
+        background-color: #f8f9fa;
+    }
+
+    .custom-th {
+        font-weight: bold; 
+        background-color: #343a40; 
+        color: #ffffff; 
+    }
+    a {
+        font-weight: bold !important;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+</style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="display-4">Welcome to Your Fitness Dashboard, {{ user_profile.user }}!</h1>
+
+        <section>
+            <h2 class="mt-4">Your Profile:</h2>
+            <div class="row flex">
+                <div class="col-md-4 card-white">
+                    <p><strong>Upcoming Goals:</strong></p>
+                    <ul>
+                        {% if fitness_goals_data %}
+                            {% for goal in fitness_goals_data %}
+                                {% if not goal.is_achieved %}
+                                    <li>{{ goal.goal_name }}</li>
+                                    <p style="font-size: small;">Expected date : {{ goal.target_date }}</p>
+                                {% endif %}
+                            {% endfor %}
+                        {% else %}
+                            <p>No data to show</p>
+                        {% endif %}
+                    </ul>
+                </div>
+                
+                
+                
+                <div class="col-md-flex card-white">
+                    <p><strong>Health Metrics:</strong></p>
+                    {% if health_metrics_data %}
+                        <ul>
+                            {% for key, value in health_metrics_data.items %}
+                                <li><strong>{{ key }}:</strong> {{ value }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>No data added</p>
+                    {% endif %}
+                </div>
+                
+                
+                
+            </div>
+            {% if not user_profile.fitness_goals and not user_profile.health_metrics %}
+               <a class="btn btn-primary" href="{% url 'fitness-user-profile' %}">Add a fitness goal</a>
+            {% endif %}
+
+        </section>
+
+        <section>
+            <h2 class="mt-4">Recent Activity Logs:</h2>
+            <table class="table table-bordered table-striped custom-table">
+                <thead>
+                    <tr>
+                        <th class="custom-th">Activity Name</th>
+                        <th class="custom-th">Duration (minutes)</th>
+                        <th class="custom-th">Calories Burned</th>
+                        <th class="custom-th">Activity Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for log in activity_logs %}
+                        <tr>
+                            <td>{{ log.activity_name }}</td>
+                            <td>{{ log.duration_minutes }} minutes</td>
+                            <td>{{ log.calories_burned }}</td>
+                            <td>{{ log.activity_date }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <a href="{% url 'fitness-tracking' %}" class="btn btn-success mb-3">Add activity</a>
+        </section>
+        
+
+        <section>
+            <h2 class="mt-4">Your Last 5 Fitness Goals:</h2>
+            <ul class="list-group">
+                {% if fitness_goals_data %}
+                    {% for goal in fitness_goals_data %}
+                        <li class="list-group-item mt-2 mb-2 card-white">
+                            <form method="post" action="{% url 'update-fitness-goal' goal.id %}">
+                                {% csrf_token %}
+                                <strong>{{ goal.goal_name }}</strong>
+                                <br> Description: {{ goal.goal_description }}
+                                <br> Target Date: {{ goal.target_date }}
+                                <br>
+                                <label for="activity_completed_{{ goal.id }}">Activity Completed:</label>
+                                
+                                <input class="ml-3" type="checkbox" id="activity_completed_{{ goal.id }}"
+                                    name="activity_completed" {% if goal.is_achieved %}checked{% endif %}>
+                                <button type="submit" class="btn btn-outline-danger ml-2">Save</button>
+                            </form>
+                        </li>
+                    {% endfor %}
+                {% else %}
+                    <p>No data</p>
+                {% endif %}
+            </ul>
+        </section>
+        
+        
+
+        <section style="margin-bottom: 200px !important;">
+            <h2 class="mt-4">Recent Progress Reports:</h2>
+          
+                <a href="{% url 'progress-reports' %}" class="btn btn-success ml-2">View reports</a>
+                <a href="{% url 'submit_progress_report' %}" class="btn btn-success ml-5">Add progress report</a>
+  
+            <ul class="list-group card-white">
+                {% for report in progress_reports %}
+                    <li class="list-group-item">
+                        Date: {{ report.report_date }}
+                        <br> Weight: {{ report.weight_kg }} kg
+                        <br> Body Fat Percentage: {{ report.body_fat_percentage }}%
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+    </div>
+</body>
+</html>

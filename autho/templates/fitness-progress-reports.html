@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="mb-0">Progress Reports</h2>
+                </div>
+                <div class="card-body">
+                    {% if progress_reports %}
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Weight (kg)</th>
+                                    <th>Body Fat Percentage</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for report in progress_reports %}
+                                    <tr>
+                                        <td>{{ report.report_date }}</td>
+                                        <td>{{ report.weight_kg }}</td>
+                                        <td>{{ report.body_fat_percentage }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    {% else %}
+                        <p>No progress reports available.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

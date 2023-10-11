@@ -1,0 +1,1276 @@
+{% load static %}
+
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>User Dashboard - StethoSense</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="{% static 'assets/vendors/mdi/css/materialdesignicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendors/css/vendor.bundle.base.css' %}">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="{% static 'assets/vendors/jvectormap/jquery-jvectormap.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendors/flag-icon-css/css/flag-icon.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendors/owl-carousel-2/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendors/owl-carousel-2/owl.theme.default.min.css' %}">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="{% static 'assets/images/favicon.png" />
+    <link rel="stylesheet" href="path-to/node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min.css' %}" />
+    <link rel="shortcut icon" href="{% static 'img/images/favicon.png' %}" type="">
+    <style>
+
+    .member-info {
+        font-size: 11px !important;
+        white-space: wrap !important; 
+    }
+
+    br {
+        display: inline-block; 
+        margin: 5px 0; 
+    }
+
+    .member-status {
+        font-size: 16px;
+        font-weight: bold;
+    }
+    .parent-div {
+        text-align: center;
+    }
+
+    .update {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007BFF;
+        color: #fff; 
+        text-decoration: none; 
+        border: none;
+        border-radius: 5px; 
+        cursor: pointer;
+        transition: background-color 0.3s ease; 
+    }
+
+
+    .update:hover {
+        background-color: #0056b3; 
+        color: #fff;
+        text-decoration: none;
+    }
+
+
+    </style>
+  </head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
+          <a class="sidebar-brand brand-logo" href="{% url 'home' %}" style="color:#fff !important;">StethoSense</a>
+          <a class="sidebar-brand brand-logo-mini" href="{% url 'home' %}"></a>
+
+        </div>
+        <ul class="nav">
+          <li class="nav-item profile">
+            <div class="profile-desc">
+              <div class="profile-pic">
+                <div class="count-indicator">
+                  
+                  <img class="img-xs rounded-circle" src="../media/{{ health_profile.profile_picture }}" alt="">
+                  <span class="count bg-success"></span>
+                </div>
+                <div class="profile-name">
+                  <h5 class="mb-0 font-weight-normal">{{ custom_user.first_name }}</h5>
+                  <span>
+                      
+                          {% if membership_duration > 30 %}
+                              <span class="member-status gold-member">Gold Member</span>
+                          {% else %}
+                              <span class="member-status regular-member">New Member</span>
+                          {% endif %}    
+                 </span>
+              </div>
+              
+              
+                
+              
+              </div>
+              <a href="#" id="profile-dropdown" data-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>
+              <div class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list" aria-labelledby="profile-dropdown">
+                <a href="#" class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                    <div class="preview-icon bg-dark rounded-circle">
+                      <i class="mdi mdi-settings text-primary"></i>
+                    </div>
+                  </div>
+                  <div class="preview-item-content">
+                    <p class="preview-subject ellipsis mb-1 text-small">Account settings</p>
+                  </div>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="{% url 'update-password' %}" class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                    <div class="preview-icon bg-dark rounded-circle">
+                      <i class="mdi mdi-onepassword  text-info"></i>
+                    </div>
+                  </div>
+                  <div class="preview-item-content">
+                    <p class="preview-subject ellipsis mb-1 text-small">Change Password</p>
+                  </div>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                    <div class="preview-icon bg-dark rounded-circle">
+                      <i class="mdi mdi-calendar-today text-success"></i>
+                    </div>
+                  </div>
+                  <div class="preview-item-content">
+                    <p class="preview-subject ellipsis mb-1 text-small">To-do list</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </li>
+
+          <li class="nav-item nav-category">
+            {% if user.date_joined %}
+                          <span class="member-info">Membership Since: {{ user.date_joined|date:"F j, Y" }}</span>
+                          <br>
+                          <span class="member-info">Last Login: {{ user.last_login|date:"F j, Y" }}</span>
+                          <br>
+            {% endif %}
+
+            <span class="nav-link">Navigation</span>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="{% url 'user-home' %}">
+              <span class="menu-icon">
+                <i class="mdi mdi-speedometer"></i>
+              </span>
+              <span class="menu-title">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <span class="menu-icon">
+                <i class="mdi mdi-laptop"></i>
+              </span>
+              <span class="menu-title">Fitness</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="{% url 'fitness-home' %}">Fitness Home</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{% url 'fitness-dashboard' %}">Fitness Dashboard</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{% url 'fitness-user-profile' %}">Add Goal</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{% url 'fitness-tracking' %}">Add Activity</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{% url 'progress-reports' %}">View Progress Report</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{% url 'submit_progress_report' %}">Add progress report</a></li>
+
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="#medicine">
+              <span class="menu-icon">
+                <i class="mdi mdi-playlist-play"></i>
+              </span>
+              <span class="menu-title">Medication</span>
+            </a>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="{% url 'diet' %}">
+              <span class="menu-icon">
+                <i class="mdi mdi-table-large"></i>
+              </span>
+              <span class="menu-title">Diet</span>
+            </a>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="../blog/Environmental-awareness/">
+              <span class="menu-icon">
+                <i class="mdi mdi-chart-bar"></i>
+              </span>
+              <span class="menu-title">Environmental <br> awarness</span>
+            </a>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="#labreports">
+              <span class="menu-icon">
+                <i class="mdi mdi-contacts"></i>
+              </span>
+              <span class="menu-title">Lab reports</span>
+            </a>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+              <span class="menu-icon">
+                <i class="mdi mdi-security"></i>
+              </span>
+              <span class="menu-title">Settings</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="auth">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="{% url 'update-password' %}"> Change password</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{% url 'delete_account' %}"> Delete account </a></li>
+                
+                <!-- <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> 500 </a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li> -->
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="{% url 'Inside_health_records' %}">
+              <span class="menu-icon">
+                <i class="mdi mdi-file-document-box"></i>
+              </span>
+              <span class="menu-title">General information</span>
+            </a>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="{% url 'logout' %}">
+              <span class="menu-icon">
+                <i class="mdi mdi-logout"></i>
+              </span>
+              <span class="menu-title">Logout</span>
+            </a>
+          </li>
+          
+        </ul>
+      </nav>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_navbar.html -->
+        <nav class="navbar p-0 fixed-top d-flex flex-row">
+          <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
+            <a class="navbar-brand brand-logo-mini" href="{% url 'home' %}"><img src="{% static 'img/images/logo.png' %}" alt="logo" style="width:30px; height:30px; border-radius: 50%;"></a>
+          </div>
+          <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
+            <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+              <span class="mdi mdi-menu"></span>
+            </button>
+            <!-- <ul class="navbar-nav w-100">
+              <li class="nav-item w-100">
+                <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
+                  <input type="text" class="form-control" placeholder="Search products">
+                </form>
+              </li>
+            </ul> -->
+            <ul class="navbar-nav navbar-nav-right">
+              <li class="nav-item dropdown d-none d-lg-block">
+                <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown" data-toggle="dropdown" aria-expanded="false" href="#">+ Upload</a>
+                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="createbuttonDropdown">
+                  <h6 class="p-3 mb-0">Reports</h6>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item preview-item">
+                    <div class="preview-thumbnail">
+                      <div class="preview-icon bg-dark rounded-circle">
+                        <i class="mdi mdi-file-outline text-primary"></i>
+                      </div>
+                    </div>
+                    <div class="preview-item-content">
+                      <p class="preview-subject ellipsis mb-1">Lab Report</p>
+                    </div>
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item preview-item">
+                    <div class="preview-thumbnail">
+                      <div class="preview-icon bg-dark rounded-circle">
+                        <i class="mdi mdi-web text-info"></i>
+                      </div>
+                    </div>
+                    <div class="preview-item-content">
+                      <p class="preview-subject ellipsis mb-1">Prescription</p>
+                    </div>
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item preview-item">
+                    <div class="preview-thumbnail">
+                      <div class="preview-icon bg-dark rounded-circle">
+                        <i class="mdi mdi-layers text-danger"></i>
+                      </div>
+                    </div>
+                    <div class="preview-item-content">
+                      <p class="preview-subject ellipsis mb-1">Hospital Bill</p>
+                    </div>
+                  </a>
+                  <!-- <div class="dropdown-divider"></div>
+                  <p class="p-3 mb-0 text-center">See all projects</p>
+                </div> -->
+              </li>
+              <li class="nav-item nav-settings d-none d-lg-block">
+                <a class="nav-link" href="#">
+                  <i class="mdi mdi-view-grid"></i>
+                </a>
+              </li>
+              <li class="nav-item dropdown border-left">
+                <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                  <i class="mdi mdi-email"></i>
+                  <span class="count bg-success"></span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
+                  <h6 class="p-3 mb-0">Messages</h6>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item preview-item">
+                    <div class="preview-thumbnail">
+                      <img src="{% static 'assets/images/faces/face4.jpg' %}" alt="image" class="rounded-circle profile-pic">
+                    </div>
+                    <div class="preview-item-content">
+                      <p class="preview-subject ellipsis mb-1">Mark send you a message</p>
+                      <p class="text-muted mb-0"> 1 Minutes ago </p>
+                    </div>
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item preview-item">
+                    <div class="preview-thumbnail">
+                      <img src="{% static 'assets/images/faces/face2.jpg' %}" alt="image" class="rounded-circle profile-pic">
+                    </div>
+                    <div class="preview-item-content">
+                      <p class="preview-subject ellipsis mb-1">Cregh send you a message</p>
+                      <p class="text-muted mb-0"> 15 Minutes ago </p>
+                    </div>
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item preview-item">
+                    <div class="preview-thumbnail">
+                      <img src="{% static 'assets/images/faces/face3.jpg' %}" alt="image" class="rounded-circle profile-pic">
+                    </div>
+                    <div class="preview-item-content">
+                      <p class="preview-subject ellipsis mb-1">Profile picture updated</p>
+                      <p class="text-muted mb-0"> 18 Minutes ago </p>
+                    </div>
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <p class="p-3 mb-0 text-center">4 new messages</p>
+                </div>
+              </li>
+              <li class="nav-item dropdown border-left">
+                <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+                  <i class="mdi mdi-bell"></i>
+                  <span class="count bg-danger"></span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+                  <h6 class="p-3 mb-0">Notifications</h6>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item preview-item">
+                    <div class="preview-thumbnail">
+                      <div class="preview-icon bg-dark rounded-circle">
+                        <i class="mdi mdi-calendar text-success"></i>
+                      </div>
+                    </div>
+                    <div class="preview-item-content">
+                      <p class="preview-subject mb-1">Appointment today</p>
+                      <p class="text-muted ellipsis mb-0"> Just a reminder that you have an Appointment today </p>
+                    </div>
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item preview-item">
+                    <div class="preview-thumbnail">
+                      <div class="preview-icon bg-dark rounded-circle">
+                        <i class="mdi mdi-settings text-danger"></i>
+                      </div>
+                    </div>
+                    <div class="preview-item-content">
+                      <p class="preview-subject mb-1">Settings</p>
+                      <p class="text-muted ellipsis mb-0"> Update dashboard </p>
+                    </div>
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item preview-item">
+                    <div class="preview-thumbnail">
+                      <div class="preview-icon bg-dark rounded-circle">
+                        <i class="mdi mdi-link-variant text-warning"></i>
+                      </div>
+                    </div>
+                    <div class="preview-item-content">
+                      <p class="preview-subject mb-1">lab Test</p>
+                      <p class="text-muted ellipsis mb-0"> You got a test scheduled </p>
+                    </div>
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <p class="p-3 mb-0 text-center">See all notifications</p>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
+                  <div class="navbar-profile">
+                    <img class="img-xs rounded-circle" src="../media/{{ health_profile.profile_picture }}" alt="">
+
+                    <p class="mb-0 d-none d-sm-block navbar-profile-name">{{ custom_user.first_name }}</p>
+                    <i class="mdi mdi-menu-down d-none d-sm-block"></i>
+                  </div>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
+                  <h6 class="p-3 mb-0">Profile</h6>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item preview-item">
+                    <div class="preview-thumbnail">
+                      <div class="preview-icon bg-dark rounded-circle">
+                        <i class="mdi mdi-settings text-success"></i>
+                      </div>
+                    </div>
+                    <div class="preview-item-content">
+                      <p class="preview-subject mb-1">Settings</p>
+                    </div>
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item preview-item" href="{% url 'logout' %}">
+                    <div class="preview-thumbnail">
+                      <div class="preview-icon bg-dark rounded-circle">
+                        <i class="mdi mdi-logout text-danger"></i>
+                      </div>
+                    </div>
+                    <div class="preview-item-content">
+                      <p class="preview-subject mb-1">Log out</p>
+                    </div>
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <p class="p-3 mb-0 text-center">Advanced settings</p>
+                </div>
+              </li>
+            </ul>
+            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+              <span class="mdi mdi-format-line-spacing"></span>
+            </button>
+            
+          </div>
+        </nav>
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <!-- <div class="row">
+              <div class="col-12 grid-margin stretch-card">
+                <div class="card corona-gradient-card">
+                  <div class="card-body py-0 px-0 px-sm-3">
+                    <div class="row align-items-center">
+                      <div class="col-4 col-sm-3 col-xl-2">
+                        <img src="{% static 'assets/images/dashboard/Group126@2x.png" class="gradient-corona-img img-fluid" alt="">
+                      </div>
+                      <div class="col-5 col-sm-7 col-xl-8 p-0">
+                        <h4 class="mb-1 mb-sm-0">Want even more features?</h4>
+                        <p class="mb-0 font-weight-normal d-none d-sm-block">Check out our Pro version with 5 unique layouts!</p>
+                      </div>
+                      <div class="col-3 col-sm-2 col-xl-2 pl-0 text-center">
+                        <span>
+                          <a href="https://www.bootstrapdash.com/product/corona-admin-template/" target="_blank" class="btn btn-outline-light btn-rounded get-started-btn">Upgrade to PRO</a>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+
+            <div class="row">
+              <div class="col-12 grid-margin stretch-card">
+               
+                  <div class="card-body py-0 px-0 px-sm-3">
+                    <div class="row align-items-center">
+                      <div class="col-4 col-sm-3 col-xl-2">
+                        <img src="{% static 'assets/images/dashboard/Group126@2x.png" class="gradient-corona-img img-fluid" alt="">
+                      </div>
+                      <div class="col-5 col-sm-7 col-xl-8 p-0">
+                        {% if messages %}
+                        <ul class="messages" style="list-style-type: none;">
+                            {% for message in messages %}
+                                <li class="alert alert-{{ message.tags }} alert-dismissible">
+                                    {{ message }}
+                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+             
+              </div>
+            </div> 
+
+            <div class="row">
+              <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-9">
+                        <div class="d-flex align-items-center align-self-start">
+                          {% if custom_user.medical_id %}
+                            <h3 class="mb-0 text-success">{{ custom_user.medical_id }}</h3>
+                          {% else %}
+                            <h3 class="mb-0 text-muted">No Data</h3>
+                          {% endif %}
+                          <!-- <p class="text-success ml-2 mb-0 font-weight-medium">+3.5%</p> -->
+                        </div>
+                      </div>
+                      <div class="col-3">
+                        <a href="../blog/all-about-medical-id/">
+                          <div class="icon icon-box-success ">
+                            <span class="mdi mdi-arrow-top-right icon-item"></span>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                    <h6 class="text-muted font-weight-normal">Meical ID </h6>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-9">
+                        <div class="d-flex align-items-center align-self-start">
+                          <h3 class="mb-0 text-success">
+                            {% if health_profile.bmi %}
+                              <h3 class="mb-0">{{ health_profile.bmi }}</h3>
+                            {% else %}
+                              <h3 class="mb-0 text-muted">No Data</h3>
+                            {% endif %}
+                        </h3>
+                          <p class="text-success ml-2 mb-0 font-weight-medium"> kg/m²</p> 
+                        </div>
+                      </div>
+                      <div class="col-3">
+                        <a href="../blog/all-about-bmi/">
+                          <div class="icon icon-box-success">
+                            <span class="mdi mdi-arrow-top-right icon-item"></span>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                    {% if health_profile.height or health_profile.weight %}
+                      <h6 class="text-muted font-weight-normal">Body Mass Index</h6>
+                      <h6 class="text-muted font-weight-normal">Height : {{ health_profile.height }} in cm</h6>
+                      <h6 class="text-muted font-weight-normal">Weight : {{ health_profile.weight }} in kg</h6>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-9">
+                        <div class="d-flex align-items-center align-self-start">
+                          <h3 class="mb-0 text-danger">
+                            {% if health_profile.blood_group %}  
+                              {{ health_profile.blood_group }}
+                              {% else %}
+                              <h3 class="mb-0 text-muted">No Data</h3>
+                            {% endif %}
+                            </h3>
+                          <!-- <p class="text-danger ml-2 mb-0 font-weight-medium">-2.4%</p> -->
+                        </div>
+                      </div>
+                      <div class="col-3">
+                        <div class="icon icon-box-danger">
+                          <span class="mdi mdi-arrow-bottom-left icon-item"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <h6 class="text-muted font-weight-normal">Blood Group</h6>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-9">
+                        <div class="d-flex align-items-center align-self-start">
+                          <h3 class="mb-0">1 day & Gold</h3>
+                          <p class="text-success ml-2 mb-0 font-weight-medium">+3.5%</p>
+                        </div>
+                      </div>
+                      <div class="col-3">
+                        <div class="icon icon-box-success ">
+                          <span class="mdi mdi-arrow-top-right icon-item"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <h6 class="text-muted font-weight-normal">Streak and Badge</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Medical Expense</h4>
+                    <canvas id="lineChart" style="height:250px"></canvas>
+                    <!-- <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
+                     <div class="text-md-center text-xl-left">
+                        <h6 class="mb-1">Transfer to Paypal</h6>
+                        <p class="text-muted mb-0">07 Jan 2019, 09:12AM</p>
+                      </div>
+                      <div class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
+                        <h6 class="font-weight-bold mb-0">$236</h6>
+                      </div>
+                    </div> -->
+                    <!-- <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
+                      <div class="text-md-center text-xl-left">
+                        <h6 class="mb-1">Tranfer to Stripe</h6>
+                        <p class="text-muted mb-0">07 Jan 2019, 09:12AM</p>
+                      </div>
+                      <div class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
+                        <h6 class="font-weight-bold mb-0">$593</h6>
+                      </div>
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-8 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="d-flex flex-row justify-content-between">
+                      <h4 class="card-title mb-1">Treatments</h4>
+                      <p class="text-muted mb-1">Your status</p>
+                    </div>
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="preview-list">
+                          <div class="preview-item border-bottom">
+                            <div class="preview-thumbnail">
+                              <div class="preview-icon bg-primary">
+                                <i class="mdi mdi-file-document"></i>
+                              </div>
+                            </div>
+                            <div class="preview-item-content d-sm-flex flex-grow">
+                              <div class="flex-grow">
+                                <h6 class="preview-subject">Fitness Goal1</h6>
+                                <p class="text-muted mb-0">Excercise Routine</p>
+                              </div>
+                              <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                <p class="text-muted">15 minutes ago</p>
+                                <p class="text-muted mb-0">30 tasks</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="preview-item border-bottom">
+                            <div class="preview-thumbnail">
+                              <div class="preview-icon bg-success">
+                                <i class="mdi mdi-cloud-download"></i>
+                              </div>
+                            </div>
+                            <div class="preview-item-content d-sm-flex flex-grow">
+                              <div class="flex-grow">
+                                <h6 class="preview-subject">Diet</h6>
+                                <p class="text-muted mb-0">Next Meal</p>
+                              </div>
+                              <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                <p class="text-muted">1 hour ago</p>
+                                <p class="text-muted mb-0">100 Day Streak</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="preview-item border-bottom">
+                            <div class="preview-thumbnail">
+                              <div class="preview-icon bg-info">
+                                <i class="mdi mdi-clock"></i>
+                              </div>
+                            </div>
+                            <div class="preview-item-content d-sm-flex flex-grow">
+                              <div class="flex-grow">
+                                <h6 class="preview-subject">Medication 1</h6>
+                                <p class="text-muted mb-0">reminder</p>
+                              </div>
+                              <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                <p class="text-muted">35 minutes ago</p>
+                                <p class="text-muted mb-0">after meal</p>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- <div class="preview-item border-bottom">
+                            <div class="preview-thumbnail">
+                              <div class="preview-icon bg-danger">
+                                <i class="mdi mdi-email-open"></i>
+                              </div>
+                            </div>
+                            <div class="preview-item-content d-sm-flex flex-grow">
+                              <div class="flex-grow">
+                                <h6 class="preview-subject">Broadcast Mail</h6>
+                                <p class="text-muted mb-0">Sent release details to team</p>
+                              </div>
+                              <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                <p class="text-muted">55 minutes ago</p>
+                                <p class="text-muted mb-0">35 tasks, 7 issues </p>
+                              </div>
+                            </div>
+                          </div> -->
+                          <div class="preview-item">
+                            <div class="preview-thumbnail">
+                              <div class="preview-icon bg-warning">
+                                <i class="mdi mdi-chart-pie"></i>
+                              </div>
+                            </div>
+                            <div class="preview-item-content d-sm-flex flex-grow">
+                              <div class="flex-grow">
+                                <h6 class="preview-subject">Medication 2</h6>
+                                <p class="text-muted mb-0">Reminder</p>
+                              </div>
+                              <div class="mr-auto text-sm-right pt-2 pt-sm-0">
+                                <p class="text-muted">50 minutes ago</p>
+                                <p class="text-muted mb-0">Before meal</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-4 grid-margin">
+                <div class="card">
+                  <div class="card-body">
+                    <h5>Last checked Blood Pressure</h5>
+                    <div class="row">
+                      <div class="col-8 col-sm-12 col-xl-8 my-auto">
+                        <div class="d-flex d-sm-block d-md-flex align-items-center">
+                          <h2 class="mb-0">
+                            {% if health_profile.blood_pressure %}
+                              {{ health_profile.blood_pressure }}
+                              <p class="text-success ml-2 mb-0 font-weight-medium">+3.5%</p>
+                             
+                            {% else %}
+                              Please add data
+                            {% endif %}
+                          </h2>
+                        </div>
+                        <h6 class="text-muted font-weight-normal">Expected around 120/80 mm Hg</h6>
+                      </div>
+                      <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
+                        <i class="icon-lg mdi mdi-codepen text-primary ml-auto"></i>
+                      </div>
+                    </div>
+                    <div class="parent-div">
+                      <a href="{% url 'collect-health-data' %}" class="update">Update data</a>
+                    </div>
+                  
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4 grid-margin">
+                <div class="card">
+                  <div class="card-body">
+                    <h5>Last checked Blood Glucose Level</h5>
+                    <div class="row">
+                      <div class="col-8 col-sm-12 col-xl-8 my-auto">
+                        <div class="d-flex d-sm-block d-md-flex align-items-center">
+                          <h2 class="mb-0">
+                            {% if health_profile.blood_glucose %}
+                              {{ health_profile.blood_glucose }}
+                              <p class="text-success ml-2 mb-0 font-weight-medium">+8.3%</p>
+                            {% else %}
+                              Please add data
+                            {% endif %}
+                          </h2>
+                          
+                        </div>
+                        <h6 class="text-muted font-weight-normal">Expected range 70 and 100 mg/dL </h6>
+                      </div>
+                      <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
+                        <i class="icon-lg mdi mdi-wallet-travel text-danger ml-auto"></i>
+                      </div>
+                    </div>
+                    <div class="parent-div">
+                      <a href="{% url 'collect-health-data' %}" class="update">Update data</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4 grid-margin">
+                <div class="card">
+                  <div class="card-body">
+                    <h5>Last checked Cholesterol Levels</h5>
+                    <div class="row">
+                      <div class="col-8 col-sm-12 col-xl-8 my-auto">
+                        <div class="d-flex d-sm-block d-md-flex align-items-center">
+                          <h3 class="mb-0">
+                            {% if health_profile.cholesterol %}
+                              <h3 class="font-weight-medium">
+                                HDL: {{ health_profile.cholesterol.hdl }} mg/dL <br> LDL: {{ health_profile.cholesterol.ldl }} mg/dL
+                                <span class="text-danger ml-2">
+                                  <p class="mt-1">-2.1%</p>
+                                </span>
+                              </h3>
+                            {% else %}
+                              <p>
+                                Please add data
+                              </p>
+                            {% endif %}
+
+                          </h2>
+                    
+                        </div>
+                      </div>
+                      <h6 class="text-muted font-weight-normal"><ul>
+                        <li><strong>LDL Cholesterol:</strong></li>
+                        <ul>
+                            <li>Ideal: Less than 100 mg/dL</li>
+                            <li>Good: 100-129 mg/dL</li>
+                            <li>Watch: Above 130 mg/dL (consider individual risk)</li>
+                        </ul>
+                        <li><strong>HDL Cholesterol:</strong></li>
+                        <ul>
+                            <li>Higher is better.</li>
+                            <li>Protective: Above 60 mg/dL</li>
+                        </ul>
+                        <li><strong>Total Cholesterol:</strong></li>
+                        <ul>
+                            <li>Desirable: Less than 200 mg/dL</li>
+                        </ul>
+                    </ul></h6>
+                      <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
+                        <i class="icon-lg mdi mdi-monitor text-success ml-auto"></i>
+                      </div>
+                    </div>
+                    <div class="parent-div">
+                      <a href="{% url 'collect-health-data' %}" class="update">Update data</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 grid-margin">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Order Status</h4>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>
+                              <div class="form-check form-check-muted m-0">
+                                <label class="form-check-label">
+                                  <input type="checkbox" class="form-check-input">
+                                </label>
+                              </div>
+                            </th>
+                            <th>Product Name</th>
+                            <th>Order No</th>
+                            <th>Product Cost</th>
+                            <th>Purchased Date</th>
+                            <th>Payment Mode</th>
+                            <th>Type of Product</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              <div class="form-check form-check-muted m-0">
+                                <label class="form-check-label">
+                                  <input type="checkbox" class="form-check-input">
+                                </label>
+                              </div>
+                            </td>
+                            <td>Product 1</td>
+                            <td>001</td>
+                            <td>$50</td>
+                            <td>2023-09-15</td>
+                            <td>Credit Card</td>
+                            <td>Medicine</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <div class="form-check form-check-muted m-0">
+                                <label class="form-check-label">
+                                  <input type="checkbox" class="form-check-input">
+                                </label>
+                              </div>
+                            </td>
+                            <td>Product 2</td>
+                            <td>002</td>
+                            <td>$75</td>
+                            <td>2023-09-16</td>
+                            <td>Cash on Delivery</td>
+                            <td>Grocery</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <div class="form-check form-check-muted m-0">
+                                <label class="form-check-label">
+                                  <input type="checkbox" class="form-check-input">
+                                </label>
+                              </div>
+                            </td>
+                            <td>Product 3</td>
+                            <td>003</td>
+                            <td>$30</td>
+                            <td>2023-09-17</td>
+                            <td>Online Payment</td>
+                            <td>Medicine</td>
+                          </tr>
+                          <!-- Add more rows with data as needed -->
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-md-6 col-xl-4 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="d-flex flex-row justify-content-between">
+                      <h4 class="card-title">Doctor's Messages</h4>
+                      <p class="text-muted mb-1 small">View all</p>
+                    </div>
+                    <div class="preview-list">
+                      <div class="preview-item border-bottom">
+                        <div class="preview-thumbnail">
+                          <img src="{% static 'assets/images/faces/face6.jpg' %}" alt="image" class="rounded-circle" />
+                        </div>
+                        <div class="preview-item-content d-flex flex-grow">
+                          <div class="flex-grow">
+                            <div class="d-flex d-md-block d-xl-flex justify-content-between">
+                              <h6 class="preview-subject">Patient: Leonard</h6>
+                              <p class="text-muted text-small">5 minutes ago</p>
+                            </div>
+                            <p class="text-muted">Patient's Condition: Feeling much better today.</p>
+                            <p class="text-success font-weight-bold">Doctor's Guidance: Continue with the prescribed medication and rest.</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="preview-item border-bottom">
+                        <div class="preview-thumbnail">
+                          <img src="{% static 'assets/images/faces/face8.jpg' %}" alt="image" class="rounded-circle" />
+                        </div>
+                        <div class="preview-item-content d-flex flex-grow">
+                          <div class="flex-grow">
+                            <div class="d-flex d-md-block d-xl-flex justify-content-between">
+                              <h6 class="preview-subject">Patient: Luella Mills</h6>
+                              <p class="text-muted text-small">10 Minutes Ago</p>
+                            </div>
+                            <p class="text-muted">Patient's Condition: Experiencing some relief from pain.</p>
+                            <p class="text-success font-weight-bold">Doctor's Guidance: Continue with pain management techniques as discussed.</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="preview-item border-bottom">
+                        <div class="preview-thumbnail">
+                          <img src="{% static 'assets/images/faces/face9.jpg' %}" alt="image" class=" rounded-circle" />
+                        </div>
+                        <div class="preview-item-content d-flex flex-grow">
+                          <div class="flex-grow">
+                            <div class="d-flex d-md-block d-xl-flex justify-content-between">
+                              <h6 class="preview-subject">Patient: Ethel Kelly</h6>
+                              <p class="text-muted text-small">2 Hours Ago</p>
+                            </div>
+                            <p class="text-muted">Patient's Condition: Fever and fatigue persisting.</p>
+                            <p class="text-warning font-weight-bold">Doctor's Recommendation: Schedule an in-person appointment for a detailed examination and tests.</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="preview-item border-bottom">
+                        <div class="preview-thumbnail">
+                          <img src="{% static 'assets/images/faces/face11.jpg' %}" alt="image" class="rounded-circle" />
+                        </div>
+                        <div class="preview-item-content d-flex flex-grow">
+                          <div class="flex-grow">
+                            <div class="d-flex d-md-block d-xl-flex justify-content-between">
+                              <h6 class="preview-subject">Patient: Herman May</h6>
+                              <p class="text-muted text-small">4 Hours Ago</p>
+                            </div>
+                            <p class="text-muted">Patient's Condition: Completely recovered from the recent illness.</p>
+                            <p class="text-success font-weight-bold">Doctor's Guidance: Continue a healthy lifestyle and regular check-ups.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+       
+              <div class="col-md-6 col-xl-4 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Latest Blogs</h4>
+                    <div class="owl-carousel owl-theme full-width owl-carousel-dash blog-carousel" id="owl-carousel-basic">
+                      <div class="item">
+                        <img src="{% static 'assets/images/blog/blog1.jpg' %}" alt="Blog 1">
+                        <div class="blog-content">
+                          <h5>Discover the Secrets of Healthy Living</h5>
+                          <p>Explore the key to maintaining a balanced and healthy lifestyle. Learn about nutrition, fitness, and mental well-being.</p>
+                          <a href="#" class="btn btn-primary">Read More</a>
+                        </div>
+                      </div>
+                      <div class="item">
+                        <img src="{% static 'assets/images/blog/blog2.jpg' %}" alt="Blog 2">
+                        <div class="blog-content">
+                          <h5>The Benefits of Regular Exercise</h5>
+                          <p>Discover the positive impact of incorporating regular exercise into your daily routine. Stay active and energized.</p>
+                          <a href="#" class="btn btn-primary">Read More</a>
+                        </div>
+                      </div>
+                      <div class="item">
+                        <img src="{% static 'assets/images/blog/blog3.jpg' %}" alt="Blog 3">
+                        <div class="blog-content">
+                          <h5>Mindfulness and Stress Reduction</h5>
+                          <p>Learn the art of mindfulness and how it can help reduce stress and improve your overall mental health.</p>
+                          <a href="#" class="btn btn-primary">Read More</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="d-flex py-4">
+                      <div class="preview-list w-100">
+                        <div class="preview-item p-0">
+                          <div class="preview-thumbnail">
+                            <img src="{% static 'assets/images/faces/face12.jpg' %}" class="rounded-circle" alt="Author">
+                          </div>
+                          <div class="preview-item-content d-flex flex-grow">
+                            <div class="flex-grow">
+                              <div class="d-flex d-md-block d-xl-flex justify-content-between">
+                                <h6 class="preview-subject">CeeCee Bass</h6>
+                                <p class="text-muted text-small">4 Hours Ago</p>
+                              </div>
+                              <p class="text-muted">Enjoying the latest blog posts and sharing valuable insights with the community.</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <p class="text-muted">Stay updated with our latest blog posts covering a variety of health and wellness topics.</p>
+                    <div class="progress progress-md blog-progress">
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              
+              <div class="col-md-12 col-xl-4 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Medical Task List</h4>
+                    <div class="add-items d-flex">
+                      <input type="text" class="form-control todo-list-input" placeholder="Enter a medical task..">
+                      <button class="add btn btn-primary todo-list-add-btn">Add</button>
+                    </div>
+                    <div class="list-wrapper">
+                      <ul class="d-flex flex-column-reverse text-white todo-list todo-list-custom">
+                        <li>
+                          <div class="form-check form-check-primary">
+                            <label class="form-check-label">
+                              <input class="checkbox" type="checkbox"> Schedule an appointment with Dr. Smith </label>
+                          </div>
+                          <i class="remove mdi mdi-close-box"></i>
+                        </li>
+                        <li>
+                          <div class="form-check form-check-primary">
+                            <label class="form-check-label">
+                              <input class="checkbox" type="checkbox"> Take medication at 9:00 AM </label>
+                          </div>
+                          <i class="remove mdi mdi-close-box"></i>
+                        </li>
+                        <li class="completed">
+                          <div class="form-check form-check-primary">
+                            <label class="form-check-label">
+                              <input class="checkbox" type="checkbox" checked> Review lab test results </label>
+                          </div>
+                          <i class="remove mdi mdi-close-box"></i>
+                        </li>
+                        <li>
+                          <div class="form-check form-check-primary">
+                            <label class="form-check-label">
+                              <input class="checkbox" type="checkbox"> Attend physical therapy session </label>
+                          </div>
+                          <i class="remove mdi mdi-close-box"></i>
+                        </li>
+                        <li>
+                          <div class="form-check form-check-primary">
+                            <label class="form-check-label">
+                              <input class="checkbox" type="checkbox"> Update medical records </label>
+                          </div>
+                          <i class="remove mdi mdi-close-box"></i>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-12">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">Patient Demographics by Countries</h4>
+                      <div class="row">
+                        <div class="col-md-5">
+                          <div class="table-responsive">
+                            <table class="table">
+                              <tbody>
+                                <tr>
+                                  <td>
+                                    <i class="flag-icon flag-icon-us"></i>
+                                  </td>
+                                  <td>United States</td>
+                                  <td class="text-right"> 1500 </td>
+                                  <td class="text-right font-weight-medium"> 56.35% </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <i class="flag-icon flag-icon-de"></i>
+                                  </td>
+                                  <td>Germany</td>
+                                  <td class="text-right"> 800 </td>
+                                  <td class="text-right font-weight-medium"> 33.25% </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <i class="flag-icon flag-icon-au"></i>
+                                  </td>
+                                  <td>Australia</td>
+                                  <td class="text-right"> 760 </td>
+                                  <td class="text-right font-weight-medium"> 15.45% </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <i class="flag-icon flag-icon-gb"></i>
+                                  </td>
+                                  <td>United Kingdom</td>
+                                  <td class="text-right"> 450 </td>
+                                  <td class="text-right font-weight-medium"> 25.00% </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <i class="flag-icon flag-icon-ro"></i>
+                                  </td>
+                                  <td>Romania</td>
+                                  <td class="text-right"> 620 </td>
+                                  <td class="text-right font-weight-medium"> 10.25% </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <i class="flag-icon flag-icon-br"></i>
+                                  </td>
+                                  <td>Brazil</td>
+                                  <td class="text-right"> 230 </td>
+                                  <td class="text-right font-weight-medium"> 75.00% </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                        <div class="col-md-7">
+                          <div id="audience-map" class="vector-map"></div>
+                        </div>
+                      </div>
+                      <div class="text-muted mt-4">
+                        This data represents patient demographics based on their home countries. The majority of patients are from the United States (56.35%), followed by Germany (33.25%), Australia (15.45%), the United Kingdom (25.00%), Romania (10.25%), and Brazil (75.00%).
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            
+          </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:partials/_footer.html -->
+          <footer class="footer">
+            <div class="d-sm-flex justify-content-center justify-content-sm-between">
+              <p> Stethosense
+                &copy; <span id="displayYear">2023</span> All Rights Reserved By
+                (Template by <a href="https://www.bootstrapdash.com/bootstrap-admin-template/">bootstrapdash.com</a>)
+              </p>
+            </div>
+          </footer>
+
+          
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="{% static 'assets/vendors/js/vendor.bundle.base.js' %}"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="{% static 'assets/vendors/chart.js/Chart.min.js' %}"></script>
+    <script src="{% static 'assets/vendors/progressbar.js/progressbar.min.js' %}"></script>
+    <script src="{% static 'assets/vendors/jvectormap/jquery-jvectormap.min.js' %}"></script>
+    <script src="{% static 'assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js' %}"></script>
+    <script src="{% static 'assets/vendors/owl-carousel-2/owl.carousel.min.js' %}"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="{% static 'assets/js/off-canvas.js' %}"></script>
+    <script src="{% static 'assets/js/hoverable-collapse.js' %}"></script>
+    <script src="{% static 'assets/js/misc.js' %}"></script>
+    <script src="{% static 'assets/js/settings.js' %}"></script>
+    <script src="{% static 'assets/js/todolist.js' %}"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="{% static 'assets/js/dashboard.js' %}"></script>
+    <!-- End custom js for this page -->
+    <script src="path-to/node_modules/chart.js/dist/Chart.min.js' %}"></script>
+    <script>
+      var data = {
+          labels: ["Red", "Blue", "Yellow", "Green", "Corona", "Orange"],
+          datasets: [{
+              label: '# of Votes',
+              data: [12, 19, 3, 5, 2, 3],
+              backgroundColor: [
+                  'rgba(255, 99, 132, 0.2)',
+                  'rgba(54, 162, 235, 0.2)',
+                  'rgba(255, 206, 86, 0.2)',
+                  'rgba(75, 192, 192, 0.2)',
+                  'rgba(153, 102, 255, 0.2)',
+                  'rgba(255, 159, 64, 0.2)'
+              ],
+              borderColor: [
+                  'rgba(255,99,132,1)',
+                  'rgba(54, 162, 235, 1)',
+                  'rgba(255, 206, 86, 1)',
+                  'rgba(75, 192, 192, 1)',
+                  'rgba(153, 102, 255, 1)',
+                  'rgba(255, 159, 64, 1)'
+              ],
+              borderWidth: 1
+          }]
+      };
+      var options = {
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero:true
+                  }
+              }]
+          },
+          legend: {
+              display: false
+          },
+          elements: {
+            point: {
+                radius: 0
+            }
+          }
+    
+      };
+      if($("#lineChart").length) {
+        var lineChartCanvas = $("#lineChart").get(0).getContext("2d");
+        var lineChart = new Chart(lineChartCanvas, {
+          type: 'line',
+          data: data,
+          options: options
+        });
+      }
+    </script>
+  </body>
+</html>

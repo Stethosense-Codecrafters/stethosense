@@ -1,0 +1,119 @@
+{% load static %}
+
+<head>
+    <!-- Bootstrap Stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom Stylesheet (style.css) -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link rel="shortcut icon" href="{% static 'img/images/favicon.png' %}" type="">
+</head>
+
+<body class="login-bg-image">
+    <section class="h-100">
+        <div class="container h-100">
+            <div class="row justify-content-center h-100">
+                <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-7 col-sm-9">
+                    <a href="{% url 'home' %}" style="text-decoration: none">
+                        <div class="text-center my-5 pt-4 pb-1 login-header-box">
+                                <h1 class="fs-3 card-title pb-2 text-white">Stethosense</h1>
+                        </div>
+                    </a>
+
+                    <div class="card shadow-lg">
+                        <div class="py-3" style="border-radius: 14px !important; background-color: rgb(0, 128, 126)">
+                            <div class="text-center text-white">
+                                Already have an account? <a href="{% url 'login' %}" style="color: lightblue">Login here.</a>
+                            </div>
+                        </div>
+                        <div class="card-body px-5 mt-0 pt-4">
+
+                            <form id="signupForm" method="POST" class="needs-validation" novalidate autocomplete="off">
+                                {% csrf_token %}
+
+                                <div class="mb-3">
+                                    <!-- <label class="mb-2 text-muted" for="first_name">First Name</label> -->
+                                    {{ form.first_name }} <br>
+                                    <!-- <label class="mb-2 text-muted" for="last_name">Last Name</label> -->
+                                    {{ form.last_name }}
+                                    <div class="invalid-feedback">
+                                        Name is required
+                                    </div>
+                                </div>
+
+                                <div class="mb-3 mt-4">
+                                    <!-- <label class="mb-2 text-muted" for="mobile">Phone number</label> -->
+                                    {{ form.mobile }}
+                                    <div class="invalid-feedback">
+                                        Mobile number must be a 10-digit number
+                                    </div>
+                                </div>
+
+                                <div class="mb-3 mt-5">
+                                    <!-- <label class="mb-2 text-muted" for="email">Email Address</label> -->
+                                    {{ form.email }}
+                                    <div class="invalid-feedback">
+                                        Email is invalid
+                                    </div>
+                                </div>
+
+                                <div class="mb-3 mt-4">
+                                    <!-- <label class="mb-2 text-muted" for="password1">Password</label> -->
+                                    {{ form.password1 }} <br>
+                                    <!-- <label class="mb-2 mt-3 text-muted" for="password2">Confirm Password</label> -->
+                                    {{ form.password2 }}
+                                    <div class="invalid-feedback">
+                                        Passwords must match
+                                    </div>
+                                </div>
+
+                                <p class="form-text text-muted mb-3 my-4">
+                                    By registering, you agree with our <a href="#" class="terms-link">terms and conditions</a>.
+                                </p>
+
+                                <div class="d-flex justify-content-center">
+                                    <input type="submit" value="Register" class="btn btn-primary custom-button" style="background-color:rgb(0, 128, 126); color: white !important">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="text-center my-5 text-muted">
+                        Copyright &copy; 2022-2023 &mdash; Stethosense
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JavaScript (you might need to adjust the path) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', function (event) {
+            var mobileInput = document.getElementById('id_mobile');
+            var password1Input = document.getElementById('id_password1');
+            var password2Input = document.getElementById('id_password2');
+            var mobile = mobileInput.value;
+            var password1 = password1Input.value;
+            var password2 = password2Input.value;
+            var mobileRegex = /^\d{10}$/;
+
+            if (!mobile.match(mobileRegex)) {
+                mobileInput.classList.add('is-invalid');
+            } else {
+                mobileInput.classList.remove('is-invalid');
+            }
+
+            if (password1 !== password2) {
+                password1Input.classList.add('is-invalid');
+                password2Input.classList.add('is-invalid');
+            } else {
+                password1Input.classList.remove('is-invalid');
+                password2Input.classList.remove('is-invalid');
+            }
+
+            if (!mobile.match(mobileRegex) || password1 !== password2) {
+                event.preventDefault(); // Prevent form submission if there are validation errors
+            }
+        });
+    </script>
+</body>

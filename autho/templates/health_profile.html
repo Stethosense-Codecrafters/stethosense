@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="mb-0">Health Profile</h2>
+                </div>
+                <div class="card-body">
+                    {% if messages %}
+                        <div class="alert alert-danger">
+                            <ul>
+                                {% for message in messages %}
+                                    <li>{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        
+                        <!-- Allergies -->
+                        <div class="form-group">
+                            <label for="{{ form.allergies.id_for_label }}">Allergies:</label>
+                            <br>
+                            <div class="text-area-container">
+                                {{ form.allergies }}
+                            </div>
+                            {% if form.allergies.errors %}
+                                <div class="text-danger">
+                                    {{ form.allergies.errors.as_text }}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <!-- Height -->
+                        <div class="row">
+                            <div class="form-group col-6">
+                                <label for="{{ form.height.id_for_label }}">Height (cm)</label>
+                                <div class="">
+                                    {{ form.height }}
+                                </div>
+                                {% if form.height.errors %}
+                                    <div class="text-danger">
+                                        {{ form.height.errors.as_text }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            
+                            <!-- Weight -->
+                            <div class="form-group col-6">
+                                <label for="{{ form.weight.id_for_label }}">Weight (kg)</label>
+                                <div class="">
+                                    {{ form.weight }}
+                                </div>
+                                {% if form.weight.errors %}
+                                    <div class="text-danger">
+                                        {{ form.weight.errors.as_text }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <!-- Age, Gender, Blood Group, Emergency Contact, Profile Picture -->
+                        <div class="row">
+                            <div class="form-group col-4">
+                                <label for="{{ form.age.id_for_label }}">Age</label>
+                                {{ form.age }}
+                                {% if form.age.errors %}
+                                    <div class="text-danger">
+                                        {{ form.age.errors.as_text }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="form-group col-4">
+                                <label for="{{ form.gender.id_for_label }}">Gender</label>
+                                {{ form.gender.label_tag }}
+                                <select name="{{ form.gender.name }}" id="{{ form.gender.id_for_label }}" class="form-control">
+                                    {% for choice in form.gender.field.choices %}
+                                        <option value="{{ choice.0 }}" {% if form.gender.value == choice.0 %}selected{% endif %}>
+                                            {{ choice.1 }}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                                {% if form.gender.errors %}
+                                    <div class="text-danger">
+                                        {{ form.gender.errors.as_text }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            
+                            
+                            
+                            <div class="form-group col-4">
+                                <label for="{{ form.blood_group.id_for_label }}">Blood Group</label>
+                                {{ form.blood_group }}
+                                {% if form.blood_group.errors %}
+                                    <div class="text-danger">
+                                        {{ form.blood_group.errors.as_text }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="{{ form.emergency_contact.id_for_label }}">Emergency Contact</label>
+                            {{ form.emergency_contact }}
+                            {% if form.emergency_contact.errors %}
+                                <div class="text-danger">
+                                    {{ form.emergency_contact.errors.as_text }}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="{{ form.profile_picture.id_for_label }}">Profile Picture</label>
+                            {{ form.profile_picture }}
+                            {% if form.profile_picture.errors %}
+                                <div class="text-danger">
+                                    {{ form.profile_picture.errors.as_text }}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

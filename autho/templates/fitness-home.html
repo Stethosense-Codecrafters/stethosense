@@ -1,0 +1,464 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- basic -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- mobile metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+  <!-- site metas -->
+  <title>Fitness Stethosense </title>
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <!-- bootstrap css -->
+  <link rel="stylesheet" href="{% static 'fitness/css/bootstrap.min.css' %}">
+  <!-- style css -->
+  <link rel="stylesheet" href="{% static 'fitness/css/style.css' %}">
+  <!-- Responsive-->
+  <link rel="stylesheet" href="{% static 'fitness/css/responsive.css' %}">
+  <!-- fevicon -->
+  <link rel="icon" href="{% static 'fitness/images/fevicon.png' %}" type="image/gif" />
+  <!-- Tweaks for older IEs-->
+  <link rel="stylesheet" href="{% static 'fitness/css/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+  <link rel="stylesheet" href="https://rawgit.com/LeshikJanz/libraries/master/Bootstrap/baguetteBox.min.css">
+  <link rel="shortcut icon" href="{% static 'img/images/favicon.png' %}" type="">
+  <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+</head>
+<!-- body -->
+
+<body class="main-layout">
+  <!-- loader  -->
+  <div class="loader_bg">
+    <div class="loader"><img src="{% static 'fitness/images/loading.gif' %}" alt="#" /></div>
+  </div>
+  <!-- end loader -->
+  <div class="full_bg">
+    <!-- header -->
+    <header class="header-area">
+      <div class="container-fluid">
+        <div class="row d_flex">
+          <div class=" col-md-3 col-sm-3">
+            <div class="logo">
+              <a href="{% url 'fitness-home' %}">Fitness Stethosense </a>
+            </div>
+          </div>
+          <div class="col-md-7 col-sm-9">
+            <div class="navbar-area">
+              <nav class="site-navbar">
+                <ul>
+                  <li><a class="active" href="{% url 'home' %}">Home</a></li>
+                  <li><a href="{% url 'fitness-home' %}">Fitness Home</a></li>
+                  <li><a href="{% url 'fitness-dashboard' %}">Fitness Dashboard</a></li>
+                  <li><a href="{% url 'user-home' %}">User Dashboard</a></li>
+                  <li><a href="#testimonials">Testimonial</a></li>
+                </ul>
+                <button class="nav-toggler">
+                  <span></span>
+                </button>
+              </nav>
+            </div>
+          </div>
+          <div class="col-md-2 d_none">
+            <ul class="email text_align_right">
+              <li><a href="Javascript:void(0)"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- end header inner -->
+    <!-- banner -->
+    <!-- carousel code -->
+    <div id="banner1" class="carousel slide slider_main">
+      <ol class="carousel-indicators">
+        <li data-target="#banner1" data-slide-to="0" class="active">q</li>
+        <li data-target="#banner1" data-slide-to="1">q</li>
+        <li data-target="#banner1" data-slide-to="2">q</li>
+      </ol>
+      <div class="carousel-inner">
+        <!-- first slide -->
+        <div class="carousel-item active">
+          <div class="container">
+            <div class="carousel-caption relative">
+              <div class="row d_flex">
+                <div class="col-md-9">
+                  <div class="creative">
+                    <h1>Welcome to Stethosense Fitness</h1>
+                    <p>Explore a healthier lifestyle with our fitness programs. We're dedicated to helping you achieve
+                      your fitness goals and lead a happier, healthier life.</p>
+                    <a class="read_more" href="{% url 'fitness-dashboard' %}">Start Today</a>
+                    <!-- <a class="read_more" href="javascript:void(0)">Learn More</a> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- second slide -->
+        <div class="carousel-item">
+          <div class="container">
+            <div class="carousel-caption relative">
+              <div class="row d_flex">
+                <div class="col-md-9">
+                  <div class="creative">
+                    <h1>Your Fitness Journey Starts Here</h1>
+                    <p>Embark on a path to a healthier you with Stethosense Fitness Club. Our expert trainers and
+                      state-of-the-art facilities are here to guide you every step of the way.</p>
+                    <a class="read_more" href="{% url 'fitness-dashboard' %}">Start Today</a>
+                    <!-- <a class="read_more" href="javascript:void(0)">Learn More</a> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- third slide-->
+        <div class="carousel-item">
+          <div class="container">
+            <div class="carousel-caption relative">
+              <div class="row d_flex">
+                <div class="col-md-9">
+                  <div class="creative">
+                    <h1>Achieve Your Fitness Goals</h1>
+                    <p>At Stethosense Fitness Club, we're dedicated to helping you achieve your fitness goals. Our
+                      personalized training programs and supportive community will keep you motivated every step of the
+                      way.</p>
+                    <a class="read_more" href="javascript:void(0)">Start Today</a>
+                    <!-- <a class="read_more" href="javascript:void(0)">Learn More</a> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- controls -->
+      <a class="carousel-control-prev" href="#banner1" role="button" data-slide="prev">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#banner1" role="button" data-slide="next">
+        <i class="fa fa-arrow-right" aria-hidden="true"></i>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+  </div>
+
+  <!-- end banner -->
+  <!-- About Stethosense Fitness -->
+  <div class="about">
+    <div class="container-fluid">
+      <div class="row d_flex">
+        <div class="col-md-5">
+          <div class="titlepage text_align_left">
+            <h2>About Stethosense Fitness</h2>
+            <p>At Stethosense Fitness, we are committed to your well-being. Our mission is to empower you to lead a
+              healthy and active lifestyle through expert guidance, innovative fitness programs, and a supportive
+              community.</p>
+            <a class="read_more" href="{% url 'fitness-user-profile' %}">Let's Begin</a>
+          </div>
+        </div>
+        <div class="col-md-7">
+          <div class="about_img">
+            <figure><img src="{% static 'fitness/images/about_img.png' %}" alt="#" /></figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End About Stethosense Fitness -->
+
+  <!-- Stethosense Features -->
+  <div class="classes">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="titlepage text_align_center">
+            <h2>Stethosense Features</h2>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="white_bg">
+            <div class="row">
+              <div class="col-md-4">
+                <div id="ho_heal" class="our_class text_align_center">
+                  <i class="d_no"><img src="{% static 'fitness/images/cho3.3.png' %}" alt="#" /></i>
+                  <i class="d_bo"><img src="{% static 'fitness/images/cho3.png' %}" alt="#" /></i>
+                  <h3>Progression</h3>
+                  <p>Experience a gradual progression in your fitness journey with expert guidance and personalized
+                    plans.</p>
+                  <!-- <a class="read_more" href="javascript:void(0)">Read More</a> -->
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div id="ho_heal" class="our_class text_align_center">
+                  <i class="d_no"><img src="{% static 'fitness/images/cho2.png' %}" alt="#" /></i>
+                  <i class="d_bo"><img src="{% static 'fitness/images/cho2.2.png' %}" alt="#" /></i>
+                  <h3>Workout</h3>
+                  <p>Explore a wide range of workout routines tailored to your fitness goals and preferences.</p>
+                  <a class="read_more" href="../blog/Stethosense-Fitness/">Read More</a>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div id="ho_heal" class="our_class text_align_center">
+                  <i class="d_no"><img src="{% static 'fitness/images/cho1.png' %}" alt="#" /></i>
+                  <i class="d_bo"><img src="{% static 'fitness/images/cho1.1.png' %}" alt="#" /></i>
+                  <h3>Nutrition</h3>
+                  <p>Enhance your well-being with expert nutritional guidance and personalized meal plans.</p>
+                  <!-- <a class="read_more" href="javascript:void(0)">Read More</a> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Stethosense Features -->
+
+  <!-- choose -->
+  <div class="choose">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="titlepage text_align_left">
+            <h2>Why you use </h2>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <!-- Reason 1 -->
+          <div id="fo" class="chose_text">
+            <div class="cho_icon">
+              <span>01</span>
+            </div>
+            <div class="seren">
+              <h3>Personalized Fitness Journey</h3>
+              <p>Your journey with Stethosense Fitness is tailored just for you:</p>
+              <ul>
+                <li>Step 1: Comprehensive Assessment</li>
+                <li>Step 2: Personalized Progression Plan</li>
+                <li>Step 3: Customized Workouts</li>
+                <li>Step 4: Expert Nutritional Guidance</li>
+                <li>Step 5: Ongoing Support and Motivation</li>
+                <li>Step 6: Easy Progress Tracking</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Reason 2 -->
+          <div id="fo" class="chose_text">
+            <div class="cho_icon">
+              <span>02</span>
+            </div>
+            <div class="seren">
+              <h3>Tons Of Fitness Options</h3>
+              <p>Explore a wide range of fitness routines:</p>
+              <ul>
+                <li>Strength Training</li>
+                <li>Cardio Workouts</li>
+                <li>Yoga Sessions</li>
+                <li>And More!</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Reason 3 -->
+          <div id="fo" class="chose_text">
+            <div class="cho_icon">
+              <span>03</span>
+            </div>
+            <div class="seren">
+              <h3>Customized Fitness Plans</h3>
+              <p>We offer personalized fitness plans tailored to your unique goals and preferences.</p>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end choose -->
+
+  <!-- workouts -->
+  <div class="workouts">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="titlepage text_align_center">
+            <h2>Our Workouts</h2>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="workout_box text_align_left">
+            <div class="workout_img">
+              <figure><img src="{% static 'fitness/images/cardio.jpg' %}" alt="Cardiovascular Training" style="max-height: 462px; max-width: 328px; width: 328px; height: 462px;" /></figure>
+              <h3>Cardiovascular Training</h3>
+              <p>Suitable for all ages and genders. Enhance your cardiovascular health and endurance.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="workout_box text_align_left">
+            <div class="workout_img">
+              <figure><img src="{% static 'fitness/images/yoga.jpg' %}" alt="Yoga and Flexibility" style="max-height: 462px; max-width: 328px; width: 328px; height: 462px;" /></figure>
+              <h3>Yoga and Flexibility</h3>
+              <p>Improve flexibility and reduce stress. Ideal for individuals of all ages and genders.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="workout_box text_align_left">
+            <div class="workout_img">
+              <figure><img src="{% static 'fitness/images/strength.png' %}" alt="Strength Training" style="max-height: 462px; max-width: 328px; width: 328px; height: 462px;" /></figure>
+              <h3>Strength Training</h3>
+              <p>Great for building muscle and strength. Suitable for adults of all fitness levels.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end workouts -->
+
+  <!-- testimonial -->
+  <div class="testimonial" id="testimonials">
+    <div class="clients_bg">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="titlepage text_align_left">
+              <h2>Testimonials</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- start slider section -->
+    <div id="myCarousel" class="carousel slide clients_banner" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="container">
+            <div class="carousel-caption tetxs">
+              <div class="row d_flex">
+                <div class="col-md-12">
+                  <div class="custom">
+                    <div class="clint">
+                      <i><img src="{% static 'fitness/images/icon.png' %}" alt="#" /></i>
+                      <h4>John Smith<br><span>Happy Client</span></h4>
+                    </div>
+                    <p>"Stethosense Fitness has transformed my life. Their personalized workouts and expert nutritional guidance helped me achieve my fitness goals. I'm healthier, stronger, and happier than ever before."</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="container">
+            <div class="carousel-caption tetxs">
+              <div class="row d_flex">
+                <div class="col-md-12">
+                  <div class="custom">
+                    <div class="clint">
+                      <i><img src="{% static 'fitness/images/icon.png' %}" alt="#" /></i>
+                      <h4>Linda Johnson<br><span>Satisfied Member</span></h4>
+                    </div>
+                    <p>"I love Stethosense Fitness! The variety of workouts and the supportive community make fitness fun. It's a fitness journey I look forward to every day."</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="container">
+            <div class="carousel-caption tetxs">
+              <div class="row d_flex">
+                <div class="col-md-12">
+                  <div class="custom">
+                    <div class="clint">
+                      <i><img src="{% static 'fitness/images/icon.png' %}" alt="#" /></i>
+                      <h4>Susan Williams<br><span>Dedicated Member</span></h4>
+                    </div>
+                    <p>"Stethosense Fitness provides the best guidance and support. The results speak for themselves. I've never felt better about my health and fitness."</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+        <i class="fa fa-arrow-right" aria-hidden="true"></i>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+  <!-- end testimonial -->
+    <a href="{% url 'fitness-home' %}">Fitness Home</a> |
+    <a href="{% url 'fitness-dashboard' %}">Fitness Dashboard</a> |
+    <a href="{% url 'fitness-user-profile' %}"> Add Goal</a> |
+    <a href="{% url 'fitness-tracking' %}">Add Activity</a> |
+    <a href="{% url 'progress-reports' %}">View Progress Report</a>
+    
+<!-- end footer -->
+<footer>
+  <div class="footer">
+
+    <div class="copyright">
+      <div class="container">
+        <div class="row d_flex">
+          <div class="col-md-8">
+            <p>Stethosense &copy; <script>document.write(new Date().getFullYear())</script> All Rights Reserved. Design by <a href="https://html.design/" target="_blank">Free HTML Templates</a></p>
+          </div>
+          <div class="col-md-4">
+            <ul class="social_icon text_align_center">
+              <li> <a href="Javascript:void(0)"><i class="fa fa-facebook-f"></i></a></li>
+              <li> <a href="Javascript:void(0)"><i class="fa fa-twitter"></i></a></li>
+              <li> <a href="Javascript:void(0)"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
+              <li> <a href="Javascript:void(0)"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- end footer -->
+
+  <!-- Javascript files-->
+  <script src="{% static 'fitness/js/jquery.min.js' %}"></script>
+  <script src="{% static 'fitness/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'fitness/js/jquery-3.0.0.min.js' %}"></script>
+  <script src="{% static 'fitness/js/owl.carousel.min.js' %}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js' %}"></script>
+  <script src="{% static 'fitness/js/custom.js' %}"></script>
+
+</body>
+
+</html>

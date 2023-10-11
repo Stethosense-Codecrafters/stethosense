@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-9">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="mb-0">Submit Progress Report</h2>
+            <p>Enter your progress report details here</p>
+          </div>
+          <div class="card-body">
+            {% if messages %}
+              <ul class="messages">
+                {% for message in messages %}
+                  <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+            <form method="post">
+              {% csrf_token %}
+              <div class="form-group">
+                <label for="{{ form.report_date.id_for_label }}">Report Date:</label>
+                {{ form.report_date }}
+                {{ form.report_date.errors }}
+              </div>
+              <div class="form-group">
+                <label for="{{ form.weight_kg.id_for_label }}">Weight (kg):</label>
+                {{ form.weight_kg }}
+                {{ form.weight_kg.errors }}
+              </div>
+              <div class="form-group">
+                <label for="{{ form.body_fat_percentage.id_for_label }}">Body Fat Percentage:</label>
+                {{ form.body_fat_percentage }}
+                {{ form.body_fat_percentage.errors }}
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

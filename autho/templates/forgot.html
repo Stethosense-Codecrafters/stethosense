@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot Password</title>
+    <link rel="shortcut icon" href="{% static 'img/images/favicon.png' %}" type="">
+    <style>
+        body {
+            background-color: rgb(33, 33, 33);
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px 20px 20px 20px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            margin-top: 100px;
+            padding-bottom: 40px;
+        }
+
+        h2 {
+            color: #00a69c;
+        }
+
+        input[type="email"] {
+            width: 75%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid lightgray;
+            border-radius: 8px;
+            background-color: #f0f0f0;
+            transition: ease .25s;
+        }
+        input[type="email"]:hover {
+            border: 2px solid lightseagreen !important;
+        }
+
+
+
+        button {
+            background-color: #00a69c;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            padding: 10px 20px 10 20px;
+            cursor: pointer;
+            padding: 10px 16px 10px 16px;
+            transition: ease .3s;
+        }
+
+        button:hover {
+            background-color: #007d75;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Forgot your password?</h2>
+        <p>Reset it here. Just enter your email down below.</p>
+        <form>
+            <input type="email" placeholder="Email" required>
+            <br><br>
+            <button type="submit">Reset Password</button>
+        </form>
+    </div>
+</body>
+</html>
