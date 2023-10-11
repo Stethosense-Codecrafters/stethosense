@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Order</title>
+</head>
+<body>
+    <h1>Track Order</h1>
+
+    <!-- Display any order tracking information here -->
+    <h2>Order Information</h2>
+    <p><strong>Order ID:</strong> {{ order.id }}</p>
+    <p><strong>Order Date:</strong> {{ order.created_at }}</p>
+    <p><strong>Total Price:</strong> ${{ order.total_price }}</p>
+
+    <h2>Order Status</h2>
+    <p><strong>Status:</strong> {{ order.status }}</p>
+    
+    <!-- Additional order tracking information can be displayed here -->
+    
+    <!-- Link to go back to the previous page -->
+    <a href="{% url 'view_cart' %}">Back to Cart</a>
+</body>
+</html>
