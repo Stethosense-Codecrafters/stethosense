@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Medicine</title>
+</head>
+<body>
+    <h1>Order Medicine</h1>
+
+    <!-- Display any success or error messages here -->
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    
+    <!-- List of available medicines -->
+    <ul>
+        {% for medicine in medicines %}
+            <li>
+                <strong>{{ medicine.name }}</strong><br>
+                Description: {{ medicine.description }}<br>
+                Price: ${{ medicine.price }}<br>
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="medicine_id" value="{{ medicine.id }}">
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" name="quantity" value="1" min="1">
+                    <button type="submit">Add to Cart</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+    
+    <!-- Link to view the cart -->
+    <a href="{% url 'view_cart' %}">View Cart</a>
+</body>
+</html>

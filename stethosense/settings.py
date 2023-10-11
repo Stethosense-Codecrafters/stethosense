@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'fitness',
     'doctor',
     'lab',
+    'pharmacy',
 ]
 
 MIDDLEWARE = [
