@@ -1,6 +1,11 @@
 from django.db import models
-from django.contrib.auth.models import User
 from autho.models import CustomUser
+
+from django.contrib.auth.models import AbstractUser, Group, Permission
+from django.utils.translation import gettext_lazy as _
+
+
+
 
 # Define choices for the lab_name field
 LAB_REPORT_CHOICES = (
@@ -10,19 +15,36 @@ LAB_REPORT_CHOICES = (
     # Add more choices as needed
 )
 
-class LabRegistration(models.Model):
+
+
+
+class LabUser(AbstractUser):
+    lab_id = models.BigAutoField(primary_key=True)  # Change the ID field name to lab_id
     lab_name = models.CharField(max_length=100)
-    registration_date = models.DateTimeField(auto_now_add=True)
     lab_owner = models.CharField(max_length=100)
     lab_email = models.EmailField(max_length=255, unique=True)
-    lab_password = models.CharField(max_length=128)  
+    lab_password = models.CharField(max_length=128)
     details = models.TextField(blank=True, null=True)
 
-    def __str__(self):
-        return f"Registration for {self.lab_name} by {self.lab_owner}"
+    groups = models.ManyToManyField(
+        Group,
+        verbose_name=_('groups'),
+        blank=True,
+        related_name='lab_users_groups'
+    )
+
+    user_permissions = models.ManyToManyField(
+        Permission,
+        verbose_name=_('user permissions'),
+        blank=True,
+        related_name='lab_users_permissions'
+    )
+
+
+
 
 class LabReport(models.Model):
-    lab = models.ForeignKey(LabRegistration, on_delete=models.CASCADE)
+    lab = models.ForeignKey(LabUser, on_delete=models.CASCADE)
     name = models.CharField(max_length=100, choices=LAB_REPORT_CHOICES)
     description = models.TextField()
     date = models.DateField()
